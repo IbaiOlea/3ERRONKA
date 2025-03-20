@@ -77,6 +77,14 @@
     </header>
 
     <main>
+    <div class="info">
+            <h2>Datos personales</h2>
+            <p>Nombre: Walter</p>
+            <p>Apellido: Wolder White</p>
+            <p>Edad: 50 años</p>
+            <p>Sexo: Masculino</p>
+            
+        </div>
         <div class="info">
             <h2>Estado Físico</h2>
             <p>Estado: Saludable</p>

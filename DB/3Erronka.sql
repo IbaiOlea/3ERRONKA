@@ -60,6 +60,7 @@ CREATE TABLE `erosketa_produktuak` (
   `produktu_id` int NOT NULL,
   `kantitatea` int NOT NULL,
   `subtotal` decimal(10,2) NOT NULL,
+  `ordua` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `erosketa_id` (`erosketa_id`),
   KEY `produktu_id` (`produktu_id`),
@@ -144,6 +145,7 @@ DROP TABLE IF EXISTS `produktuak`;
 CREATE TABLE `produktuak` (
   `id` int NOT NULL AUTO_INCREMENT,
   `izena` varchar(150) NOT NULL,
+  `kategoria` varchar(45) NOT NULL,
   `prezioa` decimal(10,2) NOT NULL,
   `stock` int NOT NULL,
   PRIMARY KEY (`id`)
@@ -168,4 +170,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-20 10:31:33
+-- Dump completed on 2025-03-21 12:00:41

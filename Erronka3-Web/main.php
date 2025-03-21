@@ -3,87 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Medical Solutions Network</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #808080;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        main {
-            flex: 1;
-            padding: 20px;
-            background-color: white;
-        }
-
-        .info {
-            margin: 20px auto;
-            padding: 20px;
-            background: #ddd;
-            width: 50%;
-            border-radius: 10px;
-        }
-
-        footer {
-            background-color: #808080;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-        }
-
-        .productos {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .producto {
-            background: #ddd;
-            padding: 15px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-        }
-
-        .producto img {
-            width: 100%;
-            border-radius: 10px;
-        }
-    </style>
+    <?php 
+    require_once("head.php");
+    ?>
 </head>
 <body>
 
     <header>
-        Medical Solutions Network
+        <span>Medical Solutions Network</span>
+        <button class="logout-button">Saioa itxi</button>
     </header>
 
     <main>
-    <div class="info">
+        <div class="info">
             <h2>Datos personales</h2>
             <p>Nombre: Walter</p>
             <p>Apellido: Wolder White</p>
             <p>Edad: 50 años</p>
             <p>Sexo: Masculino</p>
-            
         </div>
         <div class="info">
             <h2>Estado Físico</h2>
@@ -111,19 +48,17 @@
             <div class="producto">
                 <img src="https://www.masmusculo.com/72069-thickbox_default/100-whey-gold-standard-5-lb-23kg.jpg" alt="Producto 2">
                 <p>Proteina</p>
-                
             </div>
             <div class="producto">
                 <img src="https://medlineplus.gov/images/Carbohydrates_share.jpg" alt="Producto 3">
                 <p>Karbohidratoak</p>
-               
             </div>
         </div>
 
     </main>
 
     <footer>
-        © 2025 Medical Solutions Network - Todos los derechos reservados
+        © 2025 Medical Solutions Network - Eskubide guztiak erreserbatuta
     </footer>
 
 </body>

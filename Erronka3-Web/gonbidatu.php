@@ -11,7 +11,7 @@
 
     <header>
         <span>Medical Solutions Network</span>
-        <a href="logout.php" class="logout-button">Saioa itxi</a>
+        
     </header>
 
     <main>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Produktuak>
+    <Produktua id="1">
+        <Izena>Pepino</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>1.79€/kg</Prezioa>
+        <Stock>112</Stock>
+    </Produktua>
+
+    <Produktua id="2">
+        <Izena>Tomate</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>2.99€/kg</Prezioa>
+        <Stock>50</Stock>
+    </Produktua>
+
+    <Produktua id="3">
+        <Izena>Lechuga</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>1.99€/kg</Prezioa>
+        <Stock>30</Stock>
+    </Produktua>
+
+    <Produktua id="4">
+        <Izena>Zanahoria</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>1.49€/kg</Prezioa>
+        <Stock>80</Stock>
+    </Produktua>
+
+    <Produktua id="5">
+        <Izena>Calabacin</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>1.99€/kg</Prezioa>
+        <Stock>60</Stock>
+    </Produktua>
+
+    <Produktua id="6">
+        <Izena>Berenjena</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>2.49€/kg</Prezioa>
+        <Stock>40</Stock>
+    </Produktua>
+
+    <Produktua id="7">
+        <Izena>Brocoli</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>2.99€/kg</Prezioa>
+        <Stock>30</Stock>
+    </Produktua>
+
+    <Produktua id="8">
+        <Izena>Coliflor</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>2.99€/kg</Prezioa>
+        <Stock>30</Stock>
+    </Produktua>
+
+    <Produktua id="9">
+        <Izena>Calabaza</Izena>
+        <Kategoria>Barazkia</Kategoria>
+        <Prezioa>1.99€/kg</Prezioa>
+        <Stock>50</Stock>
+    </Produktua>    
+</Produktuak>

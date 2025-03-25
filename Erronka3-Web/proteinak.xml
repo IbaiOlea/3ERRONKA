@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Produktuak>
+    <Produktua id="1">
+        <Izena>Protein Shake</Izena>
+        <Kategoria>Edariak</Kategoria>
+        <Prezioa>15.99€</Prezioa>
+        <Stock>50</Stock>
+    </Produktua>
+
+    <Produktua id="2">
+        <Izena>Protein Bar</Izena>
+        <Kategoria>Janariak</Kategoria>
+        <Prezioa>2.99€</Prezioa>
+        <Stock>200</Stock>
+    </Produktua>
+
+    <Produktua id="3">
+        <Izena>Whey Protein</Izena>
+        <Kategoria>Osagarriak</Kategoria>
+        <Prezioa>29.99€</Prezioa>
+        <Stock>30</Stock>
+    </Produktua>
+
+    <Produktua id="4">
+        <Izena>Oilaskoa</Izena>
+        <Kategoria>Haragia</Kategoria>
+        <Prezioa>4.99€/kg</Prezioa>
+        <Stock>100</Stock>
+    </Produktua>
+
+    <Produktua id="5">
+        <Izena>Protein Pancakes</Izena>
+        <Kategoria>Janariak</Kategoria>
+        <Prezioa>5.99€</Prezioa>
+        <Stock>50</Stock>
+    </Produktua>
+</Produktuak>

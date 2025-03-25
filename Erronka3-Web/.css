@@ -127,3 +127,9 @@ footer {
 .login-container form button:hover {
     background-color: #666;
 }
+
+header img{
+    width: 250px;
+    height: 160px;
+    margin-right: 10px;
+}

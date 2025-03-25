@@ -10,8 +10,8 @@
 <body>
 
     <header>
-        <span>Medical Solutions Network</span>
-        <img src="M.S.N Logo-BG.png" alt="M.S.N Logo">
+       
+        <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
         <button class="logout-button">Saioa itxi</button>
     </header>
 
@@ -26,7 +26,7 @@
         <div class="info">
             <h2>Estado Físico</h2>
             <p>Estado: Saludable</p>
-            <p>Frecuencia Cardíaca: 72 bpm</p>
+           
         </div>
 
         <div class="info">
@@ -43,12 +43,12 @@
         <div class="productos">
             <div class="producto">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Romaine_lettuce.jpg/1200px-Romaine_lettuce.jpg" alt="Producto 1">
-                <p>Letxuga</p>
-                <p>2.23€</p>
+                <p>Barazkiak</p>
+                
             </div>
             <div class="producto">
                 <img src="https://www.masmusculo.com/72069-thickbox_default/100-whey-gold-standard-5-lb-23kg.jpg" alt="Producto 2">
-                <p>Proteina</p>
+                <p>Proteinak</p>
             </div>
             <div class="producto">
                 <img src="https://medlineplus.gov/images/Carbohydrates_share.jpg" alt="Producto 3">

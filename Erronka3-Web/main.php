@@ -11,7 +11,7 @@
 
     <header>
         <span>Medical Solutions Network</span>
-        <a href="logout.php" class="logout-button">Saioa itxi</a>
+        <button class="logout-button">Saioa itxi</button>
     </header>
 
     <main>
@@ -62,4 +62,4 @@
     </footer>
 
 </body>
-</html>x
+</html>

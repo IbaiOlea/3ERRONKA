@@ -1,85 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+header {
+    background-color: #808080;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap; /* Permite ajuste en pantallas pequeñas */
+}
 
-        header {
-            background-color: #808080;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
+.logout-button {
+    background-color: darkred;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    right: 20px;
+}
 
-        .logout-button {
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            position: absolute;
-            right: 20px;
-        }
+.logout-button:hover {
+    background-color: red;
+}
 
-        .logout-button:hover {
-            background-color: darkred;
-        }
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+}
 
-        main {
-            flex: 1;
-            padding: 20px;
-            background-color: white;
-        }
+.info {
+    margin: 20px auto;
+    padding: 20px;
+    background: #ddd;
+    width: 50%;
+    border-radius: 10px;
+    line-height: 1.5;
+}
 
-        .info {
-            margin: 20px auto;
-            padding: 20px;
-            background: #ddd;
-            width: 50%;
-            border-radius: 10px;
-        }
+footer {
+    background-color: #808080;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    word-wrap: break-word;
+}
 
-        footer {
-            background-color: #808080;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-        }
+.productos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
 
-        .productos {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
+.producto {
+    background: #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    max-width: 200px;
+    min-width: 150px;
+}
 
-        .producto {
-            background: #ddd;
-            padding: 15px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-        }
+.producto img {
+    width: 100%;
+    border-radius: 10px;
+}
 
-        .producto img {
-            width: 100%;
-            border-radius: 10px;
-        }
+/* Estilos específicos para el login */
+.login-container {
+    margin: auto;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.login-container form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #808080;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.login-container form button:hover {
+    background-color: #666;
+}

@@ -11,6 +11,7 @@
 
     <header>
         <span>Medical Solutions Network</span>
+        <img src="M.S.N Logo-BG.png" alt="M.S.N Logo">
         <button class="logout-button">Saioa itxi</button>
     </header>
 
@@ -58,7 +59,7 @@
     </main>
 
     <footer>
-        © 2025 Medical Solutions Network - Eskubide guztiak erreserbatuta
+        © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
     </footer>
 
 </body>

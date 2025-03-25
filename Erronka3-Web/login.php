@@ -14,8 +14,8 @@ include 'dbKonexioa.php';
 <body>
 
     <header>
-        Medical Solutions Network
-        <img src="M.S.N Logo-BG.png" alt="M.S.N Logo">
+     
+        <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
         <button class="logout-button">Pagina printzipalara joan</button>
     </header>
 

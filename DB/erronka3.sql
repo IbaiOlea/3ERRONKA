@@ -24,12 +24,12 @@ DROP TABLE IF EXISTS `erabiltzaileak`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `erabiltzaileak` (
   `ID` int NOT NULL AUTO_INCREMENT,
-  `Izena` varchar(100) NOT NULL,
-  `Abizena` varchar(100) NOT NULL,
+  `Izena` varchar(100) DEFAULT NULL,
+  `Abizena` varchar(100) DEFAULT NULL,
   `Posta_elektronikoa` varchar(255) NOT NULL,
   `Pasahitza` text NOT NULL,
   `Jaiotze_data` date DEFAULT NULL,
-  `Sexua` varchar(45) NOT NULL,
+  `Sexua` varchar(45) DEFAULT NULL,
   `Altuera` int DEFAULT NULL,
   `Pisua` decimal(3,1) DEFAULT NULL,
   `IMC` double DEFAULT NULL,
@@ -180,6 +180,7 @@ CREATE TABLE `langileak` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Izena` varchar(100) NOT NULL,
   `Abizena` varchar(100) NOT NULL,
+  `Usuarioa` varchar(100) NOT NULL,
   `Posta_elektronikoa` varchar(255) NOT NULL,
   `Pasahitza` text NOT NULL,
   `Jaiotze_data` date DEFAULT NULL,
@@ -187,7 +188,7 @@ CREATE TABLE `langileak` (
   `Lanpostua` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `posta_elektronikoa` (`Posta_elektronikoa`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -196,7 +197,7 @@ CREATE TABLE `langileak` (
 
 LOCK TABLES `langileak` WRITE;
 /*!40000 ALTER TABLE `langileak` DISABLE KEYS */;
-INSERT INTO `langileak` VALUES (21,'Ricardo','Alonso','ricardo.alonso@saludnatural.com','empSalud01','1978-05-15',2300.00,'Nutricionista'),(22,'Silvia','Vargas','silvia.vargas@saludnatural.com','empSalud02','1982-07-10',2400.00,'Asesora Nutricional'),(23,'Fernando','Martín','fernando.martin@saludnatural.com','empSalud03','1985-02-20',2500.00,'Coordinador de Logística'),(24,'Patricia','Gutiérrez','patricia.gutierrez@saludnatural.com','empSalud04','1987-11-30',2600.00,'Especialista en Calidad'),(25,'Miguel','Cabrera','miguel.cabrera@saludnatural.com','empSalud05','1979-03-05',2700.00,'Chef Saludable'),(26,'Laura','Rojas','laura.rojas@saludnatural.com','empSalud06','1983-08-22',2800.00,'Coordinadora de Ventas'),(27,'Antonio','López','antonio.lopez@saludnatural.com','empSalud07','1980-04-17',2900.00,'Distribución'),(28,'Cristina','Sanz','cristina.sanz@saludnatural.com','empSalud08','1986-12-05',3000.00,'Control de Calidad'),(29,'Javier','Domínguez','javier.dominguez@saludnatural.com','empSalud09','1981-09-12',3100.00,'Gerente de Operaciones'),(30,'Marta','Fuentes','marta.fuentes@saludnatural.com','empSalud10','1984-06-08',3200.00,'Especialista en Logística'),(31,'Ricardo','Morales','ricardo.morales@saludnatural.com','empSalud11','1988-01-17',3300.00,'Nutricionista'),(32,'Elena','Castillo','elena.castillo@saludnatural.com','empSalud12','1983-10-03',3400.00,'Asesora Nutricional'),(33,'Pablo','Navarro','pablo.navarro@saludnatural.com','empSalud13','1977-12-19',3500.00,'Coordinador de Ventas'),(34,'Sandra','Delgado','sandra.delgado@saludnatural.com','empSalud14','1989-04-04',3600.00,'Chef Saludable'),(35,'Diego','Ramos','diego.ramos@saludnatural.com','empSalud15','1982-11-11',3700.00,'Control de Calidad'),(36,'Cecilia','Molina','cecilia.molina@saludnatural.com','empSalud16','1985-07-07',3800.00,'Nutricionista'),(37,'Raúl','Suárez','raul.suarez@saludnatural.com','empSalud17','1980-03-03',3900.00,'Distribución'),(38,'Noelia','Prieto','noelia.prieto@saludnatural.com','empSalud18','1987-09-09',4000.00,'Asesora Nutricional'),(39,'Álvaro','Cabrera','alvaro.cabrera@saludnatural.com','empSalud19','1981-06-16',4100.00,'Gerente de Operaciones'),(40,'Beatriz','Gutiérrez','beatriz.gutierrez@saludnatural.com','empSalud20','1984-01-21',4200.00,'Especialista en Calidad'),(41,'Esteban','Serrano','esteban.serrano@saludnatural.com','empSalud21','1979-08-30',4300.00,'Chef Saludable'),(42,'Inés','Luna','ines.luna@saludnatural.com','empSalud22','1986-05-25',4400.00,'Nutricionista'),(43,'Víctor','Blanco','victor.blanco@saludnatural.com','empSalud23','1983-07-13',4500.00,'Coordinador de Logística'),(44,'Teresa','Fuentes','teresa.fuentes@saludnatural.com','empSalud24','1987-11-02',4600.00,'Asesora Nutricional'),(45,'Germán','Vidal','german.vidal@saludnatural.com','empSalud25','1980-10-10',4700.00,'Distribución'),(46,'Marina','Cano','marina.cano@saludnatural.com','empSalud26','1982-04-29',4800.00,'Control de Calidad'),(47,'Óscar','Duran','oscar.duran@saludnatural.com','empSalud27','1985-12-12',4900.00,'Chef Saludable'),(48,'Verónica','Moya','veronica.moya@saludnatural.com','empSalud28','1981-09-17',5000.00,'Nutricionista'),(49,'Sergio','Ibáñez','sergio.ibanez@saludnatural.com','empSalud29','1983-03-11',5100.00,'Gerente de Operaciones'),(50,'Claudia','Pascual','claudia.pascual@saludnatural.com','empSalud30','1987-07-07',5200.00,'Especialista en Calidad');
+INSERT INTO `langileak` VALUES (111,'Ricardo','Alonso','ralonso','ricardo.alonso@saludnatural.com','empSalud01','1978-05-15',2300.00,'Nutricionista'),(112,'Silvia','Vargas','svargas','silvia.vargas@saludnatural.com','empSalud02','1985-09-20',2500.00,'Dietista'),(113,'Marcos','Pérez','mperez','marcos.perez@saludnatural.com','empSalud03','1980-12-10',2200.00,'Entrenador Personal'),(114,'Ana','López','alopez','ana.lopez@saludnatural.com','empSalud04','1992-03-18',2100.00,'Fisioterapeuta'),(115,'Luis','García','lgarcia','luis.garcia@saludnatural.com','empSalud05','1975-07-25',2800.00,'Médico General'),(116,'Clara','Sánchez','csanchez','clara.sanchez@saludnatural.com','empSalud06','1990-11-05',2400.00,'Psicóloga'),(117,'Pedro','Fernández','pfernandez','pedro.fernandez@saludnatural.com','empSalud07','1983-04-30',2600.00,'Nutricionista'),(118,'Marta','Domínguez','mdominguez','marta.dominguez@saludnatural.com','empSalud08','1987-06-22',2200.00,'Dietista'),(119,'David','Martínez','dmartinez','david.martinez@saludnatural.com','empSalud09','1982-01-17',2300.00,'Entrenador Personal'),(120,'Paula','Hernández','phernandez','paula.hernandez@saludnatural.com','empSalud10','1993-09-28',2100.00,'Fisioterapeuta'),(121,'José','Ruiz','jruiz','jose.ruiz@saludnatural.com','empSalud11','1988-02-14',2600.00,'Médico General'),(122,'Carmen','Jiménez','cjimenez','carmen.jimenez@saludnatural.com','empSalud12','1985-05-11',2500.00,'Psicóloga'),(123,'Andrés','Ortega','aortega','andres.ortega@saludnatural.com','empSalud13','1979-08-03',2400.00,'Nutricionista'),(124,'Sofía','Castro','scastro','sofia.castro@saludnatural.com','empSalud14','1991-12-06',2200.00,'Dietista'),(125,'Fernando','Morales','fmorales','fernando.morales@saludnatural.com','empSalud15','1980-10-21',2300.00,'Entrenador Personal'),(126,'Laura','Navarro','lnavarro','laura.navarro@saludnatural.com','empSalud16','1994-07-09',2100.00,'Fisioterapeuta'),(127,'Daniel','Iglesias','diglesias','daniel.iglesias@saludnatural.com','empSalud17','1981-04-15',2800.00,'Médico General'),(128,'Lucía','Torres','ltorres','lucia.torres@saludnatural.com','empSalud18','1986-06-18',2500.00,'Psicóloga'),(129,'Roberto','Ramos','rramos','roberto.ramos@saludnatural.com','empSalud19','1977-09-25',2400.00,'Nutricionista'),(130,'Elena','Gómez','egomez','elena.gomez@saludnatural.com','empSalud20','1995-02-08',2200.00,'Dietista'),(131,'Juan','Muñoz','jmunoz','juan.munoz@saludnatural.com','empSalud21','1989-11-30',2300.00,'Entrenador Personal'),(132,'Cristina','Delgado','cdelgado','cristina.delgado@saludnatural.com','empSalud22','1992-08-12',2100.00,'Fisioterapeuta'),(133,'Antonio','Vega','avega','antonio.vega@saludnatural.com','empSalud23','1976-05-27',2600.00,'Médico General'),(134,'Patricia','Méndez','pmendez','patricia.mendez@saludnatural.com','empSalud24','1984-12-19',2500.00,'Psicóloga'),(135,'Alejandro','Flores','aflores','alejandro.flores@saludnatural.com','empSalud25','1983-03-14',2400.00,'Nutricionista'),(136,'Rosa','Cabrera','rcabrera','rosa.cabrera@saludnatural.com','empSalud26','1990-09-23',2200.00,'Dietista'),(137,'Manuel','Pascual','mpascual','manuel.pascual@saludnatural.com','empSalud27','1987-07-07',2300.00,'Entrenador Personal'),(138,'Natalia','Reyes','nreyes','natalia.reyes@saludnatural.com','empSalud28','1993-10-02',2100.00,'Fisioterapeuta'),(139,'Hugo','Santos','hsantos','hugo.santos@saludnatural.com','empSalud29','1981-06-11',2600.00,'Médico General'),(140,'Beatriz','Núñez','bnunez','beatriz.nunez@saludnatural.com','empSalud30','1985-01-30',2500.00,'Psicóloga');
 /*!40000 ALTER TABLE `langileak` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,4 +241,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-26 11:12:30
+-- Dump completed on 2025-03-26 11:51:24

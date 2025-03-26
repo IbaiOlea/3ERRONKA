@@ -13,6 +13,7 @@
        
         <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
         <button class="logout-button">Saioa itxi</button>
+        <a href="register2.php" class="register-button">Erregistratu bazara hemen sartu.</a>
     </header>
 
     <main>

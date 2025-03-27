@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $error_message = "Datu-basearekin konexio arazoak daude.";
             } else {
                 
-                $stmt = $conn->prepare("SELECT ID, Izena, Pasahitza FROM langileak WHERE Posta_elektronikoa = ?");
+                $stmt = $conn->prepare("SELECT ID, Izena, Pasahitza FROM erabiltzaileak WHERE Posta_elektronikoa = ?");
                 if (!$stmt) {
                     $error_message = "Errorea kontsulta prestatzerakoan: " . $conn->error;
                 } else {

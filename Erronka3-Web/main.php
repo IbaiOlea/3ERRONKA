@@ -251,11 +251,14 @@ if(isset($_SESSION['user_id'])) {
 
 <?php
     } else {
-        echo "<p>Usuario no encontrado</p>";
+        header("Location: sessionOut.php");
+        exit();
     }
 } else {
-    echo "<p>Por favor, inicie sesión</p>";
+    header("Location: sessionOut.php");
+    exit();
 }
+
 
 $conn->close();
 ?>

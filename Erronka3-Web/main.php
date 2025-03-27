@@ -181,7 +181,7 @@ if(isset($_SESSION['user_id'])) {
     <header>
         <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
         <button class="logout-button">Saioa itxi</button>
-        <a href="register2.php" class="register-button">Erregistratu bazara hemen sartu.</a>
+        
     </header>
 
     <div class="form-container">
@@ -216,9 +216,7 @@ if(isset($_SESSION['user_id'])) {
             <div class="form-group">
                 <label for="egoera">Egoera:</label>
                 <input type="text" id="egoera" value="<?php echo $egoera_text; ?>" readonly>
-                <?php if($imc): ?>
-                <div class="imc-info">IMC: <?php echo round($imc, 2); ?> - <?php echo $egoera_text; ?></div>
-                <?php endif; ?>
+                
             </div>
         </div>
 

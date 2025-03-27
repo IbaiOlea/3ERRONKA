@@ -4,15 +4,21 @@ include 'dbKonexioa.php'; // Asegúrate de que este archivo contiene la conexió
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Recoge los datos del formulario
+    $izena = $_POST['izena'];
+    $abizena = $_POST['abizena'];
     $email = $_POST['email'];
-    $password = $_POST['password']; // Almacena la contraseña tal cual (sin encriptar)
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Encripta la contraseña
 
     // Inserta los datos en la base de datos
-    $sql = "INSERT INTO erabiltzaileak (Posta_elektronikoa, Pasahitza) VALUES (?, ?)";
+    $sql = "INSERT INTO erabiltzaileak (Izena, Abizena, Posta_elektronikoa, Pasahitza) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $email, $password);
+    $stmt->bind_param("ssss", $izena, $abizena, $email, $password);
 
     if ($stmt->execute()) {
+        // Guarda el ID del usuario en la sesión
+        $_SESSION['user_id'] = $stmt->insert_id;
+        $_SESSION['email'] = $email;
+
         // Redirige al usuario a la página principal después del registro exitoso
         header("Location: main.php");
         exit();
@@ -48,6 +54,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             ?>
             <form action="" method="POST">
+                <input type="text" name="izena" placeholder="Izena" required>
+                <input type="text" name="abizena" placeholder="Abizena" required>
                 <input type="email" name="email" placeholder="Posta elektronikoa" required>
                 <input type="password" name="password" placeholder="Pasahitza" required>
                 <button type="submit">Erregistratu</button>

@@ -18,6 +18,7 @@ if ($conn->connect_error) {
 }
 
 session_start();
+
 if(isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM erabiltzaileak WHERE ID = $user_id";
@@ -64,6 +65,23 @@ if(isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <style>
+        .logout-message {
+    text-align: center;
+    margin: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.login-link {
+    color: darkred;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-link:hover {
+    color: red;
+}
     .logout-button {
             background-color: darkred;
             color: white;
@@ -184,10 +202,12 @@ if(isset($_SESSION['user_id'])) {
         </style>
 </head>
 <body>
-    <header>
-        <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-        <button class="logout-button">Saioa itxi</button>
-    </header>
+<header>
+    <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
+    <?php if (isset($_SESSION['user_id'])): ?> <!-- Solo si hay sesión activa -->
+        <a href="logout.php" class="logout-button">Saioa itxi</a>
+    <?php endif; ?>
+</header>
 
     <div class="form-container">
         <h1>Datu Pertsonalak</h1>
@@ -249,5 +269,13 @@ if(isset($_SESSION['user_id'])) {
 <footer>
 © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
 </footer>
+<?php
+if (!isset($_SESSION['user_id'])) {
+    echo '
+    <div class="logout-message">
+        <p> <a href="login.php" class="login-link">Hasi saioa </a></p>
+    </div>';
+}
+?>
 </body>
 </html>

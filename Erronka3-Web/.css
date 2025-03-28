@@ -84,7 +84,7 @@ footer {
     min-width: 150px;
 }
 .guest-button {
-    background-color: red;
+    background-color: darkred;
     color: white;
     border: none;
     padding: 10px 15px;

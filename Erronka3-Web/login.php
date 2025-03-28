@@ -32,7 +32,7 @@ include 'dbKonexioa.php';
                 <button type="submit">Sartu</button>
             </form>
             <br>
-            <button class="registbutton" href="register.php" >Erregistratu</button>
+            <a class="registbutton" href="register.php" >Erregistratu</a>
         </div>
     </div>
 

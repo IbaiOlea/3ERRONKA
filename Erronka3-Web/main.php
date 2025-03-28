@@ -5,6 +5,12 @@ $username = "root";
 $password = "1MG2024";
 $dbname = "erronka3";
 
+// Inicializar variables
+$user_data = [];
+$jaiotze_data = '';
+$imc = null;
+$egoera_text = '';
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 if ($conn->connect_error) {
@@ -17,16 +23,16 @@ if(isset($_SESSION['user_id'])) {
     $sql = "SELECT * FROM erabiltzaileak WHERE ID = $user_id";
     $result = $conn->query($sql);
     
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         $user_data = $result->fetch_assoc();
         
-        // Formatear fecha de nacimiento
-        $jaiotze_data = $user_data['Jaiotze_data'] ? (new DateTime($user_data['Jaiotze_data']))->format('Y-m-d') : '';
+        // Formatear fecha de nacimiento si existe
+        if(!empty($user_data['Jaiotze_data'])) {
+            $jaiotze_data = (new DateTime($user_data['Jaiotze_data']))->format('Y-m-d');
+        }
         
-        // Calcular IMC y determinar estado
-        $imc = null;
-        $egoera_text = '';
-        if($user_data['Pisua'] && $user_data['Altuera']) {
+        // Calcular IMC y determinar estado si existen peso y altura
+        if(!empty($user_data['Pisua']) && !empty($user_data['Altuera'])) {
             $altura_metros = $user_data['Altuera'] / 100;
             $imc = $user_data['Pisua'] / ($altura_metros * $altura_metros);
             $imc_rounded = round($imc, 1);
@@ -50,15 +56,15 @@ if(isset($_SESSION['user_id'])) {
                 $egoera_text = "Obesitate larria (III. maila)";
             }
         }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="eu">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datu Pertsonalak</title>
     <style>
-        .logout-button {
+    .logout-button {
             background-color: darkred;
             color: white;
             border: none;
@@ -175,13 +181,12 @@ if(isset($_SESSION['user_id'])) {
             color: #666;
             margin-top: 5px;
         }
-    </style>
+        </style>
 </head>
 <body>
     <header>
         <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
         <button class="logout-button">Saioa itxi</button>
-        
     </header>
 
     <div class="form-container">
@@ -190,12 +195,12 @@ if(isset($_SESSION['user_id'])) {
         <div class="form-section">
             <div class="form-group">
                 <label for="izena">Izena:</label>
-                <input type="text" id="izena" value="<?php echo htmlspecialchars($user_data['Izena']); ?>" readonly>
+                <input type="text" id="izena" value="<?php echo !empty($user_data['Izena']) ? htmlspecialchars($user_data['Izena']) : ''; ?>" readonly>
             </div>
             
             <div class="form-group">
                 <label for="abizena">Abizena:</label>
-                <input type="text" id="abizena" value="<?php echo htmlspecialchars($user_data['Abizena']); ?>" readonly>
+                <input type="text" id="abizena" value="<?php echo !empty($user_data['Abizena']) ? htmlspecialchars($user_data['Abizena']) : ''; ?>" readonly>
             </div>
             
             <div class="form-group">
@@ -205,58 +210,44 @@ if(isset($_SESSION['user_id'])) {
             
             <div class="form-group">
                 <label for="sexua">Sexua:</label>
-                <input type="text" id="sexua" value="<?php echo htmlspecialchars($user_data['Sexua']); ?>" readonly>
+                <input type="text" id="sexua" value="<?php echo !empty($user_data['Sexua']) ? htmlspecialchars($user_data['Sexua']) : ''; ?>" readonly>
             </div>
         </div>
 
+        
         <hr>
 
-        <h2>Egoera Fisikoa</h2>
-        <div class="form-section">
-            <div class="form-group">
-                <label for="egoera">Egoera:</label>
-                <input type="text" id="egoera" value="<?php echo $egoera_text; ?>" readonly>
-                
-            </div>
-        </div>
-
-        <hr>
-
-        <h2>Gorputz-masaren indizea (IMC)</h2>
-        <div class="form-section">
-            <div class="form-group">
-                <label for="pisua">Pisua:</label>
-                <input type="number" id="pisua" step="0.1" value="<?php echo htmlspecialchars($user_data['Pisua']); ?>" readonly> kg
-            </div>
-            
-            <div class="form-group">
-                <label for="altuera">Altuera:</label>
-                <input type="number" id="altuera" value="<?php echo htmlspecialchars($user_data['Altuera']); ?>" readonly> cm
-            </div>
-            
-            <div class="form-group">
-                <label for="imc">IMC:</label>
-                <input type="text" id="imc" value="<?php echo $imc ? round($imc, 2) : ''; ?>" readonly>
-            </div>
-        </div>
+<h2>Egoera Fisikoa</h2>
+<div class="form-section">
+    <div class="form-group">
+        <label for="egoera">Egoera:</label>
+        <input type="text" id="egoera" value="<?php echo $egoera_text; ?>" readonly>
+        
     </div>
+</div>
 
-    <footer>
-        © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
-    </footer>
+<hr>
+
+<h2>Gorputz-masaren indizea (IMC)</h2>
+<div class="form-section">
+    <div class="form-group">
+        <label for="pisua">Pisua:</label>
+        <input type="number" id="pisua" step="0.1" value="<?php echo isset($user_data['Pisua']) ? htmlspecialchars($user_data['Pisua']) : ''; ?>" readonly> kg    </div>
+    
+    <div class="form-group">
+        <label for="altuera">Altuera:</label>
+        <input type="number" id="altuera" value="<?php echo isset($user_data['Altuera']) ? htmlspecialchars($user_data['Altuera']) : ''; ?>" readonly> cm
+        </div>
+    
+    <div class="form-group">
+        <label for="imc">IMC:</label>
+        <input type="text" id="imc" value="<?php echo $imc ? round($imc, 2) : ''; ?>" readonly>
+    </div>
+</div>
+</div>
+
+<footer>
+© 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+</footer>
 </body>
 </html>
-
-<?php
-    } else {
-        header("Location: sessionOut.php");
-        exit();
-    }
-} else {
-    header("Location: sessionOut.php");
-    exit();
-}
-
-
-$conn->close();
-?>

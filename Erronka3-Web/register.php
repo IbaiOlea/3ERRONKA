@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $izena = $_POST['izena'];
     $abizena = $_POST['abizena'];
     $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Encripta la contraseña
+    $password = $_POST['password']; // Contraseña sin encriptar
 
     // Inserta los datos en la base de datos
     $sql = "INSERT INTO erabiltzaileak (Izena, Abizena, Posta_elektronikoa, Pasahitza) VALUES (?, ?, ?, ?)";

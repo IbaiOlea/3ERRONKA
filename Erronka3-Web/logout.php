@@ -1,6 +1,11 @@
 <?php
 session_start();
+
+// Destruir completamente la sesión
+$_SESSION = [];
 session_destroy();
-header("Location: main.php?logout=success"); // Añade parámetro
+
+// Redirigir a login.php
+header("Location: login.php");
 exit();
 ?>

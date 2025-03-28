@@ -19,6 +19,22 @@ if ($conn->connect_error) {
 
 session_start();
 
+if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
+    $_SESSION['invitado'] = true;
+    $_SESSION['user_id'] = 0; // Marcar como invitado
+}
+
+// Redirigir si no hay sesión válida
+if (!isset($_SESSION['user_id']) && !isset($_SESSION['invitado'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Redirigir a login si no hay sesión ni invitado
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
 if(isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM erabiltzaileak WHERE ID = $user_id";
@@ -72,15 +88,29 @@ if(isset($_SESSION['user_id'])) {
     background-color: #f0f0f0;
     border-radius: 5px;
 }
+/* Estilos para el enlace de inicio de sesión */
+.login-link {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    right: 20px;
+    text-decoration: none;
+}
+
 
 .login-link {
-    color: darkred;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
 .login-link:hover {
-    color: red;
+    color: white;
 }
     .logout-button {
             background-color: darkred;
@@ -204,8 +234,12 @@ if(isset($_SESSION['user_id'])) {
 <body>
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <?php if (isset($_SESSION['user_id'])): ?> <!-- Solo si hay sesión activa -->
+    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
+        <!-- Mostrar botón de cerrar sesión SOLO para usuarios autenticados -->
         <a href="logout.php" class="logout-button">Saioa itxi</a>
+    <?php elseif (isset($_SESSION['invitado'])): ?>
+        <!-- Mostrar enlace de inicio de sesión SOLO para invitados -->
+        <a href="login.php" class="login-link">Saioa hasi</a>
     <?php endif; ?>
 </header>
 

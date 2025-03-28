@@ -15,6 +15,7 @@ include 'dbKonexioa.php';
     <header>
         <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
         <a href="main.php" class="logout-button">Pagina printzipalara joan</a>
+        <a href="main.php?invitado=1" class="guest-button">Gonbidatu bezala sartu</a>
     </header>
 
     <div class="login-container">
@@ -30,8 +31,8 @@ include 'dbKonexioa.php';
                 <input type="password" name="password" placeholder="Pasahitza" required>
                 <button type="submit">Sartu</button>
             </form>
-
-            <a href="register.php" >Erregistratu</a>
+            <br>
+            <button class="registbutton" href="register.php" >Erregistratu</button>
         </div>
     </div>
 

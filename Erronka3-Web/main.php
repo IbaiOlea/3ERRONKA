@@ -1,18 +1,15 @@
 <?php
-// Conexión a la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "1MG2024";
 $dbname = "erronka3";
 
-// Inicializar variables
 $user_data = [];
 $jaiotze_data = '';
 $imc = null;
 $egoera_text = '';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
@@ -21,40 +18,31 @@ session_start();
 
 if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
     $_SESSION['invitado'] = true;
-    $_SESSION['user_id'] = 0; // Marcar como invitado
+    $_SESSION['user_id'] = 0;
 }
 
-// Redirigir si no hay sesión válida
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['invitado'])) {
     header("Location: login.php");
     exit();
 }
 
-// Redirigir a login si no hay sesión ni invitado
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
-if(isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM erabiltzaileak WHERE ID = $user_id";
     $result = $conn->query($sql);
-    
     if ($result && $result->num_rows > 0) {
         $user_data = $result->fetch_assoc();
-        
-        // Formatear fecha de nacimiento si existe
-        if(!empty($user_data['Jaiotze_data'])) {
+        if (!empty($user_data['Jaiotze_data'])) {
             $jaiotze_data = (new DateTime($user_data['Jaiotze_data']))->format('Y-m-d');
         }
-        
-        // Calcular IMC y determinar estado si existen peso y altura
-        if(!empty($user_data['Pisua']) && !empty($user_data['Altuera'])) {
+        if (!empty($user_data['Pisua']) && !empty($user_data['Altuera'])) {
             $altura_metros = $user_data['Altuera'] / 100;
             $imc = $user_data['Pisua'] / ($altura_metros * $altura_metros);
             $imc_rounded = round($imc, 1);
-            
-            // Determinar estado según IMC (clasificación OMS)
             if ($imc < 16) {
                 $egoera_text = "Desnutrizio larria";
             } elseif ($imc >= 16 && $imc < 17) {
@@ -80,235 +68,69 @@ if(isset($_SESSION['user_id'])) {
 <html lang="eu">
 <head>
     <meta charset="UTF-8">
-    <style>
-        .logout-message {
-    text-align: center;
-    margin: 20px;
-    padding: 15px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-}
-/* Estilos para el enlace de inicio de sesión */
-.login-link {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    position: absolute;
-    right: 20px;
-    text-decoration: none;
-}
-
-
-.login-link {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.login-link:hover {
-    color: white;
-}
-    .logout-button {
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            position: absolute;
-            right: 20px;
-        }
-        .logout-button:hover {
-            background-color: red;
-        }
-        header img {
-            width: 250px;
-            height: 160px;
-            margin-right: 10px;
-        }
-        .error-message {
-            color: red;
-            margin-bottom: 50px;
-            padding: 10px;
-            background-color: #ffeeee;
-            border: 1px solid #ffcccc;
-            border-radius: 4px;
-        }
-        .register-button {
-            background-color: darkred;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            position: absolute;
-            left: 40px;
-        }
-        .register-button:hover {
-            background-color: red;
-        }
-        footer {
-            background-color: #808080;
-            color: white;
-            padding: 10px;
-            font-size: 14px;
-            text-align: center;
-            word-wrap: break-word;
-        }
-        main {
-            flex: 1;
-            padding: 20px;
-            background-color: white;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #2980b9;
-            margin-top: 30px;
-        }
-        .form-section {
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: inline-block;
-            width: 150px;
-            font-weight: bold;
-        }
-        input[type="text"],
-        input[type="date"],
-        input[type="number"] {
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 200px;
-        }
-        hr {
-            border: 0;
-            height: 1px;
-            background-color: #3498db;
-            margin: 30px 0;
-        }
-        header {
-            background-color: #808080;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            flex-wrap: wrap;
-        }
-        .imc-info {
-            font-style: italic;
-            color: #666;
-            margin-top: 5px;
-        }
-        </style>
+    <link rel="stylesheet" href=".css">
+    <title>Datu Pertsonalak</title>
 </head>
 <body>
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
-        <!-- Mostrar botón de cerrar sesión SOLO para usuarios autenticados -->
         <a href="logout.php" class="logout-button">Saioa itxi</a>
     <?php elseif (isset($_SESSION['invitado'])): ?>
-        <!-- Mostrar enlace de inicio de sesión SOLO para invitados -->
         <a href="login.php" class="login-link">Saioa hasi</a>
     <?php endif; ?>
 </header>
-
-    <div class="form-container">
-        <h1>Datu Pertsonalak</h1>
-        
-        <div class="form-section">
-            <div class="form-group">
-                <label for="izena">Izena:</label>
-                <input type="text" id="izena" value="<?php echo !empty($user_data['Izena']) ? htmlspecialchars($user_data['Izena']) : ''; ?>" readonly>
-            </div>
-            
-            <div class="form-group">
-                <label for="abizena">Abizena:</label>
-                <input type="text" id="abizena" value="<?php echo !empty($user_data['Abizena']) ? htmlspecialchars($user_data['Abizena']) : ''; ?>" readonly>
-            </div>
-            
-            <div class="form-group">
-                <label for="jaiotze_data">Jaiotze data:</label>
-                <input type="date" id="jaiotze_data" value="<?php echo $jaiotze_data; ?>" readonly>
-            </div>
-            
-            <div class="form-group">
-                <label for="sexua">Sexua:</label>
-                <input type="text" id="sexua" value="<?php echo !empty($user_data['Sexua']) ? htmlspecialchars($user_data['Sexua']) : ''; ?>" readonly>
-            </div>
+<div class="form-container">
+    <h1>Datu Pertsonalak</h1>
+    <div class="form-section">
+        <div class="form-group">
+            <label for="izena">Izena:</label>
+            <input type="text" id="izena" value="<?php echo !empty($user_data['Izena']) ? htmlspecialchars($user_data['Izena']) : ''; ?>" readonly>
         </div>
-
-        
-        <hr>
-
-<h2>Egoera Fisikoa</h2>
-<div class="form-section">
-    <div class="form-group">
-        <label for="egoera">Egoera:</label>
-        <input type="text" id="egoera" value="<?php echo $egoera_text; ?>" readonly>
-        
+        <div class="form-group">
+            <label for="abizena">Abizena:</label>
+            <input type="text" id="abizena" value="<?php echo !empty($user_data['Abizena']) ? htmlspecialchars($user_data['Abizena']) : ''; ?>" readonly>
+        </div>
+        <div class="form-group">
+            <label for="jaiotze_data">Jaiotze data:</label>
+            <input type="date" id="jaiotze_data" value="<?php echo $jaiotze_data; ?>" readonly>
+        </div>
+        <div class="form-group">
+            <label for="sexua">Sexua:</label>
+            <input type="text" id="sexua" value="<?php echo !empty($user_data['Sexua']) ? htmlspecialchars($user_data['Sexua']) : ''; ?>" readonly>
+        </div>
+    </div>
+    <hr>
+    <h2>Egoera Fisikoa</h2>
+    <div class="form-section">
+        <div class="form-group">
+            <label for="egoera">Egoera:</label>
+            <input type="text" id="egoera" value="<?php echo $egoera_text; ?>" readonly>
+        </div>
+    </div>
+    <hr>
+    <h2>Gorputz-masaren indizea (IMC)</h2>
+    <div class="form-section">
+        <div class="form-group">
+            <label for="pisua">Pisua:</label>
+            <input type="number" id="pisua" step="0.1" value="<?php echo isset($user_data['Pisua']) ? htmlspecialchars($user_data['Pisua']) : ''; ?>" readonly> kg
+        </div>
+        <div class="form-group">
+            <label for="altuera">Altuera:</label>
+            <input type="number" id="altuera" value="<?php echo isset($user_data['Altuera']) ? htmlspecialchars($user_data['Altuera']) : ''; ?>" readonly> cm
+        </div>
+        <div class="form-group">
+            <label for="imc">IMC:</label>
+            <input type="text" id="imc" value="<?php echo $imc ? round($imc, 2) : ''; ?>" readonly>
+        </div>
     </div>
 </div>
-
-<hr>
-
-<h2>Gorputz-masaren indizea (IMC)</h2>
-<div class="form-section">
-    <div class="form-group">
-        <label for="pisua">Pisua:</label>
-        <input type="number" id="pisua" step="0.1" value="<?php echo isset($user_data['Pisua']) ? htmlspecialchars($user_data['Pisua']) : ''; ?>" readonly> kg    </div>
-    
-    <div class="form-group">
-        <label for="altuera">Altuera:</label>
-        <input type="number" id="altuera" value="<?php echo isset($user_data['Altuera']) ? htmlspecialchars($user_data['Altuera']) : ''; ?>" readonly> cm
-        </div>
-    
-    <div class="form-group">
-        <label for="imc">IMC:</label>
-        <input type="text" id="imc" value="<?php echo $imc ? round($imc, 2) : ''; ?>" readonly>
-    </div>
-</div>
-</div>
-
 <footer>
 © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
 </footer>
 <?php
 if (!isset($_SESSION['user_id'])) {
-    echo '
-    <div class="logout-message">
-        <p> <a href="login.php" class="login-link">Hasi saioa </a></p>
-    </div>';
+    echo '<div class="logout-message"><p><a href="login.php" class="login-link">Hasi saioa</a></p></div>';
 }
 ?>
 </body>

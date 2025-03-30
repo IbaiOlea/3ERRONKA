@@ -59,7 +59,6 @@ CREATE TABLE `erosketa_produktuak` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `ErabiltzaileID` int NOT NULL,
   `ProduktuID` int NOT NULL,
-  `Eskaera_data` date DEFAULT NULL,
   `Kantitatea` int NOT NULL,
   `Prezioa` double NOT NULL,
   PRIMARY KEY (`ID`),
@@ -242,4 +241,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-28 14:13:36
+-- Dump completed on 2025-03-30 21:56:24

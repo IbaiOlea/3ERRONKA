@@ -64,6 +64,19 @@ header img {
 .login-link:hover {
     color: white;
 }
+
+.product-link{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    left: 20px;
+    text-decoration: none;
+}
 .guest-button {
     background-color: darkred;
     color: white;

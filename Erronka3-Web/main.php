@@ -43,23 +43,16 @@ if (isset($_SESSION['user_id'])) {
             $altura_metros = $user_data['Altuera'] / 100;
             $imc = $user_data['Pisua'] / ($altura_metros * $altura_metros);
             $imc_rounded = round($imc, 1);
-            if ($imc < 16) {
-                $egoera_text = "Desnutrizio larria";
-            } elseif ($imc >= 16 && $imc < 17) {
-                $egoera_text = "Desnutrizio moderatua";
-            } elseif ($imc >= 17 && $imc < 18.5) {
-                $egoera_text = "Desnutrizio arina";
+        
+           
+            if ($imc >= 17 && $imc < 18.5) {
+                $egoera_text = "Desnutrizioa";
             } elseif ($imc >= 18.5 && $imc < 25) {
                 $egoera_text = "Pisu normala";
             } elseif ($imc >= 25 && $imc < 30) {
                 $egoera_text = "Sobrepisua";
-            } elseif ($imc >= 30 && $imc < 35) {
-                $egoera_text = "Obesitate motela (I. maila)";
-            } elseif ($imc >= 35 && $imc < 40) {
-                $egoera_text = "Obesitate ertaina (II. maila)";
-            } else {
-                $egoera_text = "Obesitate larria (III. maila)";
-            }
+            } elseif ($imc >= 30 && $imc < 35);
+             
         }
     }
 }
@@ -76,8 +69,10 @@ if (isset($_SESSION['user_id'])) {
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
         <a href="logout.php" class="logout-button">Saioa itxi</a>
+        <a href="produktuak.php" class="product-link">Zure produktuak</a>
     <?php elseif (isset($_SESSION['invitado'])): ?>
         <a href="login.php" class="login-link">Saioa hasi</a>
+        <a href="productInvitedList.php" class="product-link">Produktu zerrenda</a>
     <?php endif; ?>
 </header>
 <div class="form-container">

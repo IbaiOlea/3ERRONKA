@@ -71,6 +71,30 @@ if ($result_user->num_rows > 0) {
         .product-box img {
             max-width: 100px;
             max-height: 100px;
+            margin-bottom: 10px;
+        }
+        .product-buttons {
+            margin-top: 10px;
+        }
+        .buy-button, .add-to-cart-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            width: 100%;
+        }
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+        .add-to-cart-button {
+            background-color: #008CBA;
+        }
+        .add-to-cart-button:hover {
+            background-color: #007bb5;
         }
     </style>
 </head>
@@ -78,7 +102,7 @@ if ($result_user->num_rows > 0) {
 
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <a href="main.php" class="logout-button">Pagina printzipalara joan</a>
+    <a href="main.php" class="logout-button">Orri printzipalara joan</a>
 </header>
 
 <main>
@@ -98,6 +122,17 @@ if ($result_user->num_rows > 0) {
                 } else {
                     echo '<p>Irudia ez dago eskuragarri.</p>';
                 }
+                // Botones de comprar y añadir a la cesta
+                echo '<div class="product-buttons">';
+                echo '<form action="comprar.php" method="GET" style="display: inline;">';
+                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
+                echo '<button type="submit" class="buy-button">Erosi</button>';
+                echo '</form>';
+                echo '<form action="cesta.php" method="POST" style="display: inline;">';
+                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
+                echo '<button type="submit" class="add-to-cart-button">Gehitu saskira</button>';
+                echo '</form>';
+                echo '</div>';
                 echo '</div>';
             }
         } else {
@@ -109,7 +144,6 @@ if ($result_user->num_rows > 0) {
 
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
-    
 </footer>
 
 </body>

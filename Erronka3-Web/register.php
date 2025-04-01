@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <header>
         <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-        <a href="main.php" class="logout-button">Pagina printzipalara joan</a>
+        <a href="main.php" class="logout-button">Orri printzipalara joan</a>
     </header>
 
     <div class="login-container">

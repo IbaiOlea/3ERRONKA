@@ -13,13 +13,65 @@ $result = $conn->query($sql);
     <title>Medical Solutions Network - Productos</title>
     <link rel="stylesheet" href="styles.css">
     <?php require_once("head.php"); ?>
+    <style>
+       .product-list {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente fila si no caben */
+    gap: 20px; /* Espaciado entre los elementos */
+    justify-content: center; /* Centra los productos horizontalmente */
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 250px; /* Ancho fijo para cada producto */
+    text-align: center;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para un diseño más atractivo */
+}
+
+.product-item img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px; /* Espaciado debajo de la imagen */
+}
+
+.product-buttons {
+    margin-top: 10px;
+}
+
+.buy-button, .add-to-cart-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    width: 100%; /* Hace que los botones ocupen todo el ancho del contenedor */
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+}
+
+.add-to-cart-button {
+    background-color: #008CBA;
+}
+
+.add-to-cart-button:hover {
+    background-color: #007bb5;
+}
+    </style>
 </head>
 <body>
 
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <a href="main.php" class="logout-button">Pagina printzipalara joan</a>
-   
+    <a href="main.php" class="logout-button">Orri printzipalara joan</a>
 </header>
 
 <main>
@@ -35,10 +87,21 @@ $result = $conn->query($sql);
                 echo '<p>Prezioa: ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
                 echo '<p>Stock: ' . htmlspecialchars($row['Stock']) . '</p>';
                 if (!empty($row['Argazkia'])) {
-                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '" style="max-width: 200px; max-height: 200px;">';
+                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '">';
                 } else {
                     echo '<p>Irudia ez dago eskuragarri.</p>';
                 }
+                // Botones de comprar y añadir a la cesta
+                echo '<div class="product-buttons">';
+                echo '<form action="comprar.php" method="GET" style="display: inline;">';
+                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
+                echo '<button type="submit" class="buy-button">Erosi</button>';
+                echo '</form>';
+                echo '<form action="cesta.php" method="POST" style="display: inline;">';
+                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
+                echo '<button type="submit" class="add-to-cart-button">Gehitu saskira</button>';
+                echo '</form>';
+                echo '</div>';
                 echo '</div>';
             }
         } else {

@@ -14,7 +14,7 @@ include 'dbKonexioa.php';
 
     <header>
         <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-        <a href="main.php" class="logout-button">Pagina printzipalara joan</a>
+        <a href="main.php" class="logout-button">Orri printzipalara joan</a>
         <a href="main.php?invitado=1" class="guest-button">Gonbidatu bezala sartu</a>
     </header>
 

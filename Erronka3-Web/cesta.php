@@ -4,11 +4,6 @@ $username = "root";
 $password = "1MG2024";
 $dbname = "erronka3";
 
-$user_data = [];
-$jaiotze_data = '';
-$imc = null;
-$egoera_text = '';
-
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
@@ -17,8 +12,41 @@ if ($conn->connect_error) {
 session_start();
 
 // Inicializa el carrito si no existe
-if (!isset($_SESSION['cesta'])) {
+if (!isset($_SESSION['cesta']) || !is_array($_SESSION['cesta'])) {
     $_SESSION['cesta'] = [];
+}
+
+// Procesar la compra
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buy'])) {
+    if (!empty($_SESSION['cesta'])) {
+        foreach ($_SESSION['cesta'] as $product_id => $cantidad) {
+            // Consulta para obtener el precio del producto
+            $sql = "SELECT Prezioa FROM produktuak WHERE ID = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("i", $product_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result && $result->num_rows > 0) {
+                $product = $result->fetch_assoc();
+                $prezioa = $product['Prezioa'];
+
+                // Insertar o actualizar en la tabla erosketa_produktuak
+                $sql_insert = "INSERT INTO erosketa_produktuak (ErabiltzaileID, ProduktuID, Kantitatea, Prezioa)
+                               VALUES (?, ?, ?, ?)
+                               ON DUPLICATE KEY UPDATE Kantitatea = Kantitatea + VALUES(Kantitatea)";
+                $stmt_insert = $conn->prepare($sql_insert);
+                $stmt_insert->bind_param("iiid", $_SESSION['user_id'], $product_id, $cantidad, $prezioa);
+                $stmt_insert->execute();
+            }
+        }
+
+        // Vaciar el carrito después de la compra
+        $_SESSION['cesta'] = [];
+
+        // Mostrar mensaje de confirmación
+        $compra_realizada = true;
+    }
 }
 
 // Verifica si se envió un producto por POST para añadir al carrito
@@ -47,46 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
     // Redirige para evitar reenvío del formulario
     header("Location: cesta.php");
     exit();
-}
-
-if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
-    $_SESSION['invitado'] = true;
-    $_SESSION['user_id'] = 0;
-}
-
-if (!isset($_SESSION['user_id']) && !isset($_SESSION['invitado'])) {
-    header("Location: login.php");
-    exit();
-}
-
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-    $sql = "SELECT * FROM erabiltzaileak WHERE ID = $user_id";
-    $result = $conn->query($sql);
-    if ($result && $result->num_rows > 0) {
-        $user_data = $result->fetch_assoc();
-        if (!empty($user_data['Jaiotze_data'])) {
-            $jaiotze_data = (new DateTime($user_data['Jaiotze_data']))->format('Y-m-d');
-        }
-        if (!empty($user_data['Pisua']) && !empty($user_data['Altuera'])) {
-            $altura_metros = $user_data['Altuera'] / 100;
-            $imc = $user_data['Pisua'] / ($altura_metros * $altura_metros);
-            $imc_rounded = round($imc, 1);
-
-            if ($imc >= 17 && $imc < 18.5) {
-                $egoera_text = "Desnutrizioa";
-            } elseif ($imc >= 18.5 && $imc < 25) {
-                $egoera_text = "Pisu normala";
-            } elseif ($imc >= 25 && $imc < 30) {
-                $egoera_text = "Sobrepisua";
-            } elseif ($imc >= 30 && $imc < 35);
-        }
-    }
 }
 ?>
 <!DOCTYPE html>
@@ -178,18 +166,18 @@ if (isset($_SESSION['user_id'])) {
         ?>
     </div>
     <?php if (!empty($_SESSION['cesta'])): ?>
-        <form action="comprar.php" method="POST">
+        <form action="cesta.php" method="POST">
+            <input type="hidden" name="buy" value="1">
             <button type="submit" class="buy-button">Erosi</button>
         </form>
+    <?php endif; ?>
+    <?php if (isset($compra_realizada) && $compra_realizada): ?>
+        <p>Erosketa ondo egin da.</p>
     <?php endif; ?>
 </div>
 
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
 </footer>
-
-<?php if (!isset($_SESSION['user_id'])) {
-    echo '<div class="logout-message"><p><a href="login.php" class="login-link">Hasi saioa</a></p></div>';
-} ?>
 </body>
 </html>

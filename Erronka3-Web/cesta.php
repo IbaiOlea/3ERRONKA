@@ -21,7 +21,7 @@ if (!isset($_SESSION['cesta'])) {
     $_SESSION['cesta'] = [];
 }
 
-// Verifica si se envió un producto por POST
+// Verifica si se envió un producto por POST para añadir al carrito
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     $product_id = intval($_POST['product_id']);
 
@@ -35,6 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
 
     // Redirige de vuelta a la página de productos
     header("Location: produktuak.php");
+    exit();
+}
+
+// Verifica si se envió un producto por POST para eliminar del carrito
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id'])) {
+    $remove_product_id = intval($_POST['remove_product_id']);
+    if (isset($_SESSION['cesta'][$remove_product_id])) {
+        unset($_SESSION['cesta'][$remove_product_id]); // Eliminar el producto del carrito
+    }
+    // Redirige para evitar reenvío del formulario
+    header("Location: cesta.php");
     exit();
 }
 
@@ -103,6 +114,21 @@ if (isset($_SESSION['user_id'])) {
         .buy-button:hover {
             background-color: #45a049;
         }
+
+        .remove-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .remove-button:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 <body>
@@ -133,7 +159,14 @@ if (isset($_SESSION['user_id'])) {
 
                 if ($result && $result->num_rows > 0) {
                     $product = $result->fetch_assoc();
-                    echo '<li>' . htmlspecialchars($product['Izena']) . ' - Kantitatea: ' . $cantidad . '</li>';
+                    echo '<li>';
+                    echo htmlspecialchars($product['Izena']) . ' - Kantitatea: ' . $cantidad;
+                    // Botón para eliminar el producto del carrito
+                    echo '<form action="cesta.php" method="POST" style="display: inline;">';
+                    echo '<input type="hidden" name="remove_product_id" value="' . htmlspecialchars($product_id) . '">';
+                    echo '<button type="submit" class="remove-button">Kendu</button>';
+                    echo '</form>';
+                    echo '</li>';
                 } else {
                     echo '<li>Producto desconocido (ID: ' . $product_id . ') - Cantidad: ' . $cantidad . '</li>';
                 }

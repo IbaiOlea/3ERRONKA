@@ -78,34 +78,27 @@ $result = $conn->query($sql);
     <h1>Produktuak</h1>
     <div class="product-list">
         <?php
-       if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="product-item">';
-            echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
-            echo '<p>Kategoria: ' . htmlspecialchars($row['Kategoria']) . '</p>';
-            echo '<p>Prezioa: ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
-            echo '<p>Stock: ' . htmlspecialchars($row['Stock']) . '</p>';
-            // Verificar si la imagen está definida y no está vacía
-            if (!empty($row['Argazkia'])) {
-                echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '" style="max-width: 200px;">';
-            } else {
-                echo '<p>Irudia ez dago eskuragarri.</p>';
-            }
-            echo '</div>';
-        }
-    }
-                // Botones de comprar y añadir a la cesta
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="product-item">';
+                echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
+                echo '<p>Kategoria: ' . htmlspecialchars($row['Kategoria']) . '</p>';
+                echo '<p>Prezioa: ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
+                echo '<p>Stock: ' . htmlspecialchars($row['Stock']) . '</p>';
+                // Verificar si la imagen está definida y no está vacía
+                if (!empty($row['Argazkia'])) {
+                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '" style="max-width: 200px;">';
+                } else {
+                    echo '<p>Irudia ez dago eskuragarri.</p>';
+                }
+                // Botón de añadir a la cesta
                 echo '<div class="product-buttons">';
-                echo '<form action="comprar.php" method="GET" style="display: inline;">';
-                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
-                echo '<button type="submit" class="buy-button">Erosi</button>';
-                echo '</form>';
                 echo '<form action="cesta.php" method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
                 echo '<button type="submit" class="add-to-cart-button">Gehitu saskira</button>';
                 echo '</form>';
-                echo '</div>';
-                echo '</div>';
+                echo '</div>'; // Cierra product-buttons
+                echo '</div>'; // Cierra product-item
             }
         } else {
             echo '<p>Ez dago produkturik datu-basean.</p>';

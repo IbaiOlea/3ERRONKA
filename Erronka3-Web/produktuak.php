@@ -131,12 +131,8 @@ if ($result_user->num_rows > 0) {
                 } else {
                     echo '<p>Irudia ez dago eskuragarri.</p>';
                 }
-                // Botones de comprar y añadir a la cesta
+                // Botón de añadir a la cesta
                 echo '<div class="product-buttons">';
-                echo '<form action="comprar.php" method="GET" style="display: inline;">';
-                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
-                echo '<button type="submit" class="buy-button">Erosi</button>';
-                echo '</form>';
                 echo '<form action="cesta.php" method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
                 echo '<button type="submit" class="add-to-cart-button">Gehitu saskira</button>';

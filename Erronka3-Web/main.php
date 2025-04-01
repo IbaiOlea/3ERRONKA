@@ -16,22 +16,24 @@ if ($conn->connect_error) {
 
 session_start();
 
+// Configurar sesión para invitados
 if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
     $_SESSION['invitado'] = true;
     $_SESSION['user_id'] = 0;
 }
 
+// Inicializar el carrito si no existe
+if (!isset($_SESSION['cesta'])) {
+    $_SESSION['cesta'] = [];
+}
+
+// Redirigir al login si no hay sesión activa ni invitado
 if (!isset($_SESSION['user_id']) && !isset($_SESSION['invitado'])) {
     header("Location: login.php");
     exit();
 }
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     $user_id = $_SESSION['user_id'];
     $sql = "SELECT * FROM erabiltzaileak WHERE ID = $user_id";
     $result = $conn->query($sql);
@@ -132,5 +134,3 @@ if (isset($_SESSION['user_id'])) {
 } ?>
 </body>
 </html>
-
-

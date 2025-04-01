@@ -52,7 +52,6 @@ if ($result_user->num_rows > 0) {
     <meta charset="UTF-8">
     <title>Medical Solutions Network - Productos</title>
     <link rel="stylesheet" href="styles.css">
-    <?php require_once("head.php"); ?>
     <style>
         .product-container {
             display: flex;
@@ -102,8 +101,18 @@ if ($result_user->num_rows > 0) {
 
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <a href="main.php" class="logout-button">Orri printzipalara joan</a>
+    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
+        <a href="main.php" class="logout-button">Orri printzipalara joan</a>
+       
+        
+        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+    <?php elseif (isset($_SESSION['invitado'])): ?>
+       
+        
+        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+    <?php endif; ?>
 </header>
+
 
 <main>
     <h1>Zure produktuak</h1>

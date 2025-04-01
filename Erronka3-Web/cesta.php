@@ -16,6 +16,28 @@ if ($conn->connect_error) {
 
 session_start();
 
+// Inicializa el carrito si no existe
+if (!isset($_SESSION['cesta'])) {
+    $_SESSION['cesta'] = [];
+}
+
+// Verifica si se envió un producto por POST
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
+    $product_id = intval($_POST['product_id']);
+
+    // Si el producto ya está en el carrito, incrementa la cantidad
+    if (isset($_SESSION['cesta'][$product_id])) {
+        $_SESSION['cesta'][$product_id]++;
+    } else {
+        // Si no está, agrégalo con cantidad 1
+        $_SESSION['cesta'][$product_id] = 1;
+    }
+
+    // Redirige de vuelta a la página de productos
+    header("Location: produktuak.php");
+    exit();
+}
+
 if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {
     $_SESSION['invitado'] = true;
     $_SESSION['user_id'] = 0;
@@ -61,7 +83,27 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <title>Datu Pertsonalak</title>
+    <title>Carrito</title>
+    <style>
+        .buy-button {
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -69,58 +111,44 @@ if (isset($_SESSION['user_id'])) {
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
         <a href="produktuak.php" class="product-link">Zure produktuak</a>
         <a href="logout.php" class="logout-button">Saioa itxi</a>
-        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
     <?php elseif (isset($_SESSION['invitado'])): ?>
         <a href="login.php" class="logout-button">Saioa hasi</a>
         <a href="productInvitedList.php" class="logout-button">Produktu zerrenda</a>
-        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
     <?php endif; ?>
 </header>
 
 <div class="form-container">
-    <h1>Datu Pertsonalak</h1>
+    <h1>Carrito</h1>
     <div class="form-section">
-        <div class="form-group">
-            <label for="izena">Izena:</label>
-            <input type="text" id="izena" value="<?php echo !empty($user_data['Izena']) ? htmlspecialchars($user_data['Izena']) : ''; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="abizena">Abizena:</label>
-            <input type="text" id="abizena" value="<?php echo !empty($user_data['Abizena']) ? htmlspecialchars($user_data['Abizena']) : ''; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="jaiotze_data">Jaiotze data:</label>
-            <input type="date" id="jaiotze_data" value="<?php echo $jaiotze_data; ?>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="sexua">Sexua:</label>
-            <input type="text" id="sexua" value="<?php echo !empty($user_data['Sexua']) ? htmlspecialchars($user_data['Sexua']) : ''; ?>" readonly>
-        </div>
+        <?php
+        if (!empty($_SESSION['cesta'])) {
+            echo '<ul>';
+            foreach ($_SESSION['cesta'] as $product_id => $cantidad) {
+                // Consulta para obtener el nombre del producto
+                $sql = "SELECT Izena FROM produktuak WHERE ID = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $product_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result && $result->num_rows > 0) {
+                    $product = $result->fetch_assoc();
+                    echo '<li>' . htmlspecialchars($product['Izena']) . ' - Kantitatea: ' . $cantidad . '</li>';
+                } else {
+                    echo '<li>Producto desconocido (ID: ' . $product_id . ') - Cantidad: ' . $cantidad . '</li>';
+                }
+            }
+            echo '</ul>';
+        } else {
+            echo '<p>El carrito está vacío.</p>';
+        }
+        ?>
     </div>
-    <hr>
-    <h2>Egoera Fisikoa</h2>
-    <div class="form-section">
-        <div class="form-group">
-            <label for="egoera">Egoera:</label>
-            <input type="text" id="egoera" value="<?php echo $egoera_text; ?>" readonly>
-        </div>
-    </div>
-    <hr>
-    <h2>Gorputz-masaren indizea (IMC)</h2>
-    <div class="form-section">
-        <div class="form-group">
-            <label for="pisua">Pisua:</label>
-            <input type="number" id="pisua" step="0.1" value="<?php echo isset($user_data['Pisua']) ? htmlspecialchars($user_data['Pisua']) : ''; ?>" readonly> kg
-        </div>
-        <div class="form-group">
-            <label for="altuera">Altuera:</label>
-            <input type="number" id="altuera" value="<?php echo isset($user_data['Altuera']) ? htmlspecialchars($user_data['Altuera']) : ''; ?>" readonly> cm
-        </div>
-        <div class="form-group">
-            <label for="imc">IMC:</label>
-            <input type="text" id="imc" value="<?php echo $imc ? round($imc, 2) : ''; ?>" readonly>
-        </div>
-    </div>
+    <?php if (!empty($_SESSION['cesta'])): ?>
+        <form action="comprar.php" method="POST">
+            <button type="submit" class="buy-button">Erosi</button>
+        </form>
+    <?php endif; ?>
 </div>
 
 <footer>
@@ -132,5 +160,3 @@ if (isset($_SESSION['user_id'])) {
 } ?>
 </body>
 </html>
-
-

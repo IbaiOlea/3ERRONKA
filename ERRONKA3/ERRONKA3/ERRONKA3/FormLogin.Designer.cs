@@ -1,4 +1,6 @@
-﻿namespace ERRONKA3
+﻿using System;
+
+namespace ERRONKA3
 {
     partial class FormLogin
     {
@@ -85,11 +87,10 @@
         }
     }
 }
-using System;
 
 public class Class1
 {
-	public Class1()
-	{
-	}
+    public Class1()
+    {
+    }
 }

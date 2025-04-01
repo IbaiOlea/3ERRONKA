@@ -1,4 +1,6 @@
-﻿namespace ERRONKA3
+﻿using System;
+
+namespace ERRONKA3
 {
     partial class FormDatos
     {
@@ -131,12 +133,4 @@
             PerformLayout();
         }
     }
-}
-using System;
-
-public class Class1
-{
-	public Class1()
-	{
-	}
 }

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
 -- Host: localhost    Database: erronka3
 -- ------------------------------------------------------
--- Server version	8.0.39
+-- Server version	8.0.41
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `erabiltzaileak` (
   `Sexua` varchar(45) DEFAULT NULL,
   `Altuera` int DEFAULT NULL,
   `Pisua` decimal(3,1) DEFAULT NULL,
-  `IMC` decimal(3,1) DEFAULT NULL,
+  `IMC` double DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `posta_elektronikoa` (`Posta_elektronikoa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -44,38 +44,8 @@ CREATE TABLE `erabiltzaileak` (
 
 LOCK TABLES `erabiltzaileak` WRITE;
 /*!40000 ALTER TABLE `erabiltzaileak` DISABLE KEYS */;
-INSERT INTO `erabiltzaileak` VALUES (1,'Almudena','Cortés','almudena.cortes@saludnatural.com','verde123','1985-04-12','F',165,68.0,25.0),(2,'Bernardo','Soler','bernardo.soler@saludnatural.com','natura456','1979-11-03','M',178,75.0,23.7),(3,'Carla','Rivas','carla.rivas@saludnatural.com','bio789','1992-07-19','F',160,52.0,20.3),(4,'Diego','Molina','diego.molina@saludnatural.com','salud321','1988-03-25','M',172,68.0,23.0),(5,'Elena','Fuentes','elena.fuentes@saludnatural.com','verde654','1990-08-30','F',158,54.0,21.6),(6,'Federico','Navarro','federico.navarro@saludnatural.com','natura987','1983-12-05','M',180,80.0,24.7),(7,'Gloria','Paredes','gloria.paredes@saludnatural.com','bio159','1993-05-15','F',162,55.0,21.0),(8,'Héctor','Vega','hector.vega@saludnatural.com','salud753','1987-09-22','M',175,70.0,22.9),(9,'Isabel','Luna','isabel.luna@saludnatural.com','verde852','1991-01-18','F',160,53.0,20.8),(10,'Javier','Romero','javier.romero@saludnatural.com','natura4567','1986-06-07','M',182,78.0,23.5),(11,'Karla','Cano','karla.cano@saludnatural.com','bio135','1994-10-12','F',159,52.5,20.7),(12,'Luis','Del Valle','luis.delvalle@saludnatural.com','salud246','1980-02-28','M',177,72.0,22.9),(13,'Marina','Cruz','marina.cruz@saludnatural.com','verde369','1993-11-17','F',163,56.0,21.1),(14,'Nicolás','Ibarra','nicolas.ibarra@saludnatural.com','natura147','1989-04-03','M',174,68.0,22.5),(15,'Olga','Reyes','olga.reyes@saludnatural.com','bio258','1991-08-09','F',160,54.0,21.1),(16,'Pablo','Sanz','pablo.sanz@saludnatural.com','salud3698','1982-12-20','M',180,76.0,23.5),(17,'Quintina','Morales','quintina.morales@saludnatural.com','verde9876','1990-03-30','F',162,55.5,21.1),(18,'Ramón','Giménez','ramon.gimenez@saludnatural.com','natura3210','1984-07-04','M',176,73.0,23.6),(19,'Sara','Ortega','sara.ortega@saludnatural.com','bio741','1992-09-15','F',161,53.5,20.5),(20,'Tomás','Herrera','tomas.herrera@saludnatural.com','salud8520','1987-05-21','M',178,74.0,23.3),(21,'Ursula','Méndez','ursula.mendez@saludnatural.com','verde963','1993-12-11','F',159,52.0,20.5),(22,'Víctor','López','victor.lopez@saludnatural.com','natura1597','1981-06-26','M',175,70.0,22.9),(23,'Wanda','Soler','wanda.soler@saludnatural.com','bio7531','1994-02-14','F',160,53.0,20.8),(24,'Xavier','Ruiz','xavier.ruiz@saludnatural.com','salud357','1985-08-18','M',180,78.0,24.1),(25,'Yolanda','Gil','yolanda.gil@saludnatural.com','verde951','1990-11-27','F',163,57.0,21.4),(26,'Zacarías','Ferrer','zacarias.ferrer@saludnatural.com','natura8521','1983-03-09','M',177,71.0,22.7),(27,'Amalia','Bravo','amalia.bravo@saludnatural.com','bio4561','1989-10-05','F',162,56.5,21.5),(28,'Benjamín','Vidal','benjamin.vidal@saludnatural.com','salud6541','1986-12-31','M',175,69.5,22.6),(29,'Estebe','Ormazabal','estebe.ormazabal@saludnatural.com','aaaaaaaaa',NULL,NULL,NULL,NULL,0.0);
+INSERT INTO `erabiltzaileak` VALUES (1,'Almudena','Cortés','almudena.cortes@saludnatural.com','verde123','1985-04-12','F',165,68.0,24.977043158861342),(2,'Bernardo','Soler','bernardo.soler@saludnatural.com','natura456','1979-11-03','M',178,75.0,23.7),(3,'Carla','Rivas','carla.rivas@saludnatural.com','bio789','1992-07-19','F',160,52.0,20.3),(4,'Diego','Molina','diego.molina@saludnatural.com','salud321','1988-03-25','M',172,68.0,23),(5,'Elena','Fuentes','elena.fuentes@saludnatural.com','verde654','1990-08-30','F',158,54.0,21.6),(6,'Federico','Navarro','federico.navarro@saludnatural.com','natura987','1983-12-05','M',180,80.0,24.7),(7,'Gloria','Paredes','gloria.paredes@saludnatural.com','bio159','1993-05-15','F',162,55.0,21),(8,'Héctor','Vega','hector.vega@saludnatural.com','salud753','1987-09-22','M',175,70.0,22.9),(9,'Isabel','Luna','isabel.luna@saludnatural.com','verde852','1991-01-18','F',160,53.0,20.8),(10,'Javier','Romero','javier.romero@saludnatural.com','natura4567','1986-06-07','M',182,78.0,23.5),(11,'Karla','Cano','karla.cano@saludnatural.com','bio135','1994-10-12','F',159,52.5,20.7),(12,'Luis','Del Valle','luis.delvalle@saludnatural.com','salud246','1980-02-28','M',177,72.0,22.9),(13,'Marina','Cruz','marina.cruz@saludnatural.com','verde369','1993-11-17','F',163,56.0,21.1),(14,'Nicolás','Ibarra','nicolas.ibarra@saludnatural.com','natura147','1989-04-03','M',174,68.0,22.5),(15,'Olga','Reyes','olga.reyes@saludnatural.com','bio258','1991-08-09','F',160,54.0,21.1),(16,'Pablo','Sanz','pablo.sanz@saludnatural.com','salud3698','1982-12-20','M',180,76.0,23.5),(17,'Quintina','Morales','quintina.morales@saludnatural.com','verde9876','1990-03-30','F',162,55.5,21.1),(18,'Ramón','Giménez','ramon.gimenez@saludnatural.com','natura3210','1984-07-04','M',176,73.0,23.6),(19,'Sara','Ortega','sara.ortega@saludnatural.com','bio741','1992-09-15','F',161,53.5,20.5),(20,'Tomás','Herrera','tomas.herrera@saludnatural.com','salud8520','1987-05-21','M',178,74.0,23.3),(21,'Ursula','Méndez','ursula.mendez@saludnatural.com','verde963','1993-12-11','F',159,52.0,20.5),(22,'Víctor','López','victor.lopez@saludnatural.com','natura1597','1981-06-26','M',175,70.0,22.9),(23,'Wanda','Soler','wanda.soler@saludnatural.com','bio7531','1994-02-14','F',160,53.0,20.8),(24,'Xavier','Ruiz','xavier.ruiz@saludnatural.com','salud357','1985-08-18','M',180,78.0,24.1),(25,'Yolanda','Gil','yolanda.gil@saludnatural.com','verde951','1990-11-27','F',163,57.0,21.4),(26,'Zacarías','Ferrer','zacarias.ferrer@saludnatural.com','natura8521','1983-03-09','M',177,71.0,22.7),(27,'Amalia','Bravo','amalia.bravo@saludnatural.com','bio4561','1989-10-05','F',162,56.5,21.5),(28,'Benjamín','Vidal','benjamin.vidal@saludnatural.com','salud6541','1986-12-31','M',175,69.5,22.6),(29,'Estebe','Ormazabal','estebe.ormazabal@saludnatural.com','aaaaaaaaa',NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `erabiltzaileak` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `erosketa_produktuak`
---
-
-DROP TABLE IF EXISTS `erosketa_produktuak`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `erosketa_produktuak` (
-  `ID` int NOT NULL AUTO_INCREMENT,
-  `ErabiltzaileID` int NOT NULL,
-  `ProduktuID` int NOT NULL,
-  `Kantitatea` int NOT NULL,
-  `Prezioa` double NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `produktu_id` (`ProduktuID`),
-  KEY `erosketa_produktuak_ibfk_1_idx` (`ErabiltzaileID`),
-  CONSTRAINT `erosketa_produktuak_ibfk_1` FOREIGN KEY (`ErabiltzaileID`) REFERENCES `erabiltzaileak` (`ID`) ON DELETE CASCADE,
-  CONSTRAINT `erosketa_produktuak_ibfk_2` FOREIGN KEY (`ProduktuID`) REFERENCES `produktuak` (`ID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `erosketa_produktuak`
---
-
-LOCK TABLES `erosketa_produktuak` WRITE;
-/*!40000 ALTER TABLE `erosketa_produktuak` DISABLE KEYS */;
-/*!40000 ALTER TABLE `erosketa_produktuak` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -88,15 +58,16 @@ DROP TABLE IF EXISTS `fakturak`;
 CREATE TABLE `fakturak` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `ErabiltzaileID` int NOT NULL,
-  `ErosketaProduktuID` int NOT NULL,
+  `ProduktuaID` int NOT NULL,
   `Erosketa_data` date DEFAULT NULL,
-  `Guztira` decimal(10,2) NOT NULL,
+  `Kantitatea` int NOT NULL,
+  `Prezioa` decimal(10,2) NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `erabiltzaile_id` (`ErabiltzaileID`),
-  KEY `fakturak_ibfk_2_idx` (`ErosketaProduktuID`),
-  CONSTRAINT `fakturak_ibfk_1` FOREIGN KEY (`ErabiltzaileID`) REFERENCES `erabiltzaileak` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fakturak_ibfk_2` FOREIGN KEY (`ErosketaProduktuID`) REFERENCES `erosketa_produktuak` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `fakturak_ibfk_2_idx` (`ProduktuaID`),
+  KEY `fakturak_ibfk_1_idx` (`ErabiltzaileID`),
+  CONSTRAINT `fakturak_ibfk_1` FOREIGN KEY (`ErabiltzaileID`) REFERENCES `erabiltzaileak` (`ID`),
+  CONSTRAINT `fakturak_ibfk_2` FOREIGN KEY (`ProduktuaID`) REFERENCES `produktuak` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,4 +215,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-01 11:45:48
+-- Dump completed on 2025-04-01 12:41:39

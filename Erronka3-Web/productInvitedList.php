@@ -70,9 +70,19 @@ $result = $conn->query($sql);
 <body>
 
 <header>
+<a href="main.php" class="logout-button">Orri printzipalara joan</a>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <a href="main.php" class="logout-button">Orri printzipalara joan</a>
+    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
+        
+    
+        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+    <?php elseif (isset($_SESSION['invitado'])): ?>
+        
+       
+        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+    <?php endif; ?>
 </header>
+
 
 <main>
     <h1>Produktuak</h1>

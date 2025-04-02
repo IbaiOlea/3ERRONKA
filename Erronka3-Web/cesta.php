@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
             }
             echo '</ul>';
         } else {
-            echo '<p>El carrito está vacío.</p>';
+            echo '<p>Saskia hutsik dago.</p>';
         }
         ?>
     </div>

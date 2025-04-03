@@ -1,14 +1,5 @@
 <?php 
-$servername = "localhost";
-$username = "root";
-$password = "1MG2024";
-$dbname = "erronka3";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-
+include 'dbKonexioa.php'; // Archivo de conexión a la base de datos
 session_start();
 
 // Inicializa el carrito si no existe
@@ -31,10 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buy'])) {
                 $product = $result->fetch_assoc();
                 $prezioa = $product['Prezioa'];
 
-                // Insertar o actualizar en la tabla erosketa_produktuak
-                $sql_insert = "INSERT INTO erosketa_produktuak (ErabiltzaileID, ProduktuID, Kantitatea, Prezioa)
-                               VALUES (?, ?, ?, ?)
-                               ON DUPLICATE KEY UPDATE Kantitatea = Kantitatea + VALUES(Kantitatea)";
+                // Insertar en la tabla fakturak
+                $sql_insert = "INSERT INTO fakturak (ErabiltzaileID, ProduktuaID, Erosketa_data, Kantitatea, Prezioa)
+                               VALUES (?, ?, NOW(), ?, ?)";
                 $stmt_insert = $conn->prepare($sql_insert);
                 $stmt_insert->bind_param("iiid", $_SESSION['user_id'], $product_id, $cantidad, $prezioa);
                 $stmt_insert->execute();

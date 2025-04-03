@@ -1,20 +1,14 @@
 <?php 
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "1MG2024";
-$dbname = "erronka3";
+include 'dbKonexioa.php'; // Archivo de conexión a la base de datos
 
 $user_data = [];
 $jaiotze_data = '';
 $imc = null;
 $egoera_text = '';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+
 
 // Configurar sesión para invitados
 if (isset($_GET['invitado']) && $_GET['invitado'] == 1) {

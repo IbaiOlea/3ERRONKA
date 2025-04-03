@@ -6,12 +6,15 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     line-height: 1.6;
     color: #333;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    display: block; 
-    max-width: none;
-    margin: 0; 
 }
 
 header {
@@ -63,7 +66,7 @@ header img {
     color: white;
 }
 .cart-button {
-    background-color: #008CBA; /
+    background-color: #008CBA; /* Color diferente para el carrito */
     color: white;
     text-decoration: none;
     padding: 10px 15px;
@@ -76,7 +79,7 @@ header img {
 }
 
 .cart-button:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5; /* Color más oscuro al pasar el mouse */
 }
 .product-link{
     background-color: red;
@@ -267,35 +270,4 @@ hr {
     font-style: italic;
     color: #666;
     margin-top: 5px;
-}
-@media (max-width: 768px) {
-    header {
-        flex-direction: column; 
-        text-align: center;
-    }
-    header img {
-        margin: 0 auto 10px; 
-    }
-    .logout-button, .login-link, .register-button, .guest-button {
-        width: 100%; 
-    }
-    .productos {
-        flex-direction: column; 
-    }
-    .producto {
-        width: 100%; 
-        max-width: 300px;
-    }
-    .login-container {
-        padding: 15px;
-    }
-    .login-container h2 {
-        font-size: 16px; 
-    }
-    .error-message {
-        font-size: 12px; 
-    }
-    footer {
-        font-size: 10px; 
-    }
 }

@@ -11,8 +11,8 @@ if (!isset($_SESSION['cesta']) || !is_array($_SESSION['cesta'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buy'])) {
     if (!empty($_SESSION['cesta'])) {
         foreach ($_SESSION['cesta'] as $product_id => $cantidad) {
-            // Consulta para obtener el precio del producto
-            $sql = "SELECT Prezioa FROM produktuak WHERE ID = ?";
+            // Consulta para obtener el precio y el stock del producto
+            $sql = "SELECT Prezioa, Stock FROM produktuak WHERE ID = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $product_id);
             $stmt->execute();
@@ -21,13 +21,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buy'])) {
             if ($result && $result->num_rows > 0) {
                 $product = $result->fetch_assoc();
                 $prezioa = $product['Prezioa'];
+                $stock_actual = $product['Stock'];
 
-                // Insertar en la tabla fakturak
-                $sql_insert = "INSERT INTO fakturak (ErabiltzaileID, ProduktuaID, Erosketa_data, Kantitatea, Prezioa)
-                               VALUES (?, ?, NOW(), ?, ?)";
-                $stmt_insert = $conn->prepare($sql_insert);
-                $stmt_insert->bind_param("iiid", $_SESSION['user_id'], $product_id, $cantidad, $prezioa);
-                $stmt_insert->execute();
+                // Verificar si hay suficiente stock
+                if ($stock_actual >= $cantidad) {
+                    // Insertar en la tabla fakturak
+                    $sql_insert = "INSERT INTO fakturak (ErabiltzaileID, ProduktuaID, Erosketa_data, Kantitatea, Prezioa)
+                                   VALUES (?, ?, NOW(), ?, ?)";
+                    $stmt_insert = $conn->prepare($sql_insert);
+                    $stmt_insert->bind_param("iiid", $_SESSION['user_id'], $product_id, $cantidad, $prezioa);
+                    $stmt_insert->execute();
+
+                    // Reducir el stock del producto
+                    $nuevo_stock = $stock_actual - $cantidad;
+                    $sql_update_stock = "UPDATE produktuak SET Stock = ? WHERE ID = ?";
+                    $stmt_update_stock = $conn->prepare($sql_update_stock);
+                    $stmt_update_stock->bind_param("ii", $nuevo_stock, $product_id);
+                    $stmt_update_stock->execute();
+                } else {
+                    // Mostrar mensaje de error si no hay suficiente stock
+                    echo "<p>Ez dago stock nahikorik produkturako: " . htmlspecialchars($product['Izena']) . "</p>";
+                }
             }
         }
 

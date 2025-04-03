@@ -37,18 +37,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     // Determinar la "egoera" basándose en el IMC
     if ($imc !== 'Datos incompletos') {
         if ($imc < 18.5) {
-            $egoera_text = 'Pisu bajua';
+            $egoera_text = 'Desnutrizioa';
         } elseif ($imc >= 18.5 && $imc <= 24.9) {
             $egoera_text = 'Pisu normala';
         } elseif ($imc >= 25 && $imc <= 29.9) {
             $egoera_text = 'Sobrepisua';
-        } elseif ($imc >= 30 && $imc <= 34.9) {
         } else {
             $egoera_text = 'Obesitatea';
         }
-    } else {
-        $egoera_text = 'Datos incompletos';
-    }
+    } 
 }
 ?>
 <!DOCTYPE html>

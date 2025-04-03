@@ -31,22 +31,22 @@ namespace ERRONKA3
             // 
             // txtCorreo
             // 
-            txtCorreo.Location = new Point(122, 25);
+            txtCorreo.Location = new Point(271, 215);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(175, 27);
+            txtCorreo.Size = new Size(256, 27);
             txtCorreo.TabIndex = 0;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(122, 60);
+            txtPassword.Location = new Point(271, 271);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(175, 27);
+            txtPassword.Size = new Size(256, 27);
             txtPassword.TabIndex = 1;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(112, 121);
+            btnLogin.Location = new Point(310, 349);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(175, 31);
             btnLogin.TabIndex = 2;
@@ -57,7 +57,7 @@ namespace ERRONKA3
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
-            lblCorreo.Location = new Point(30, 28);
+            lblCorreo.Location = new Point(159, 222);
             lblCorreo.Name = "lblCorreo";
             lblCorreo.Size = new Size(57, 20);
             lblCorreo.TabIndex = 3;
@@ -66,7 +66,7 @@ namespace ERRONKA3
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(30, 63);
+            lblPassword.Location = new Point(159, 274);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(86, 20);
             lblPassword.TabIndex = 4;
@@ -74,7 +74,7 @@ namespace ERRONKA3
             // 
             // FormLogin
             // 
-            ClientSize = new Size(335, 183);
+            ClientSize = new Size(915, 470);
             Controls.Add(lblPassword);
             Controls.Add(lblCorreo);
             Controls.Add(btnLogin);

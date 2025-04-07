@@ -46,12 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
+<<<<<<< Updated upstream
 <html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8">
     <title><?= t('registerTitle') ?></title>
     <link rel="stylesheet" href="styles.css">
 </head>
+=======
+<html lang="es">
+<?php include 'header.php'; ?>
+<?php require_once("head.php"); ?>
+>>>>>>> Stashed changes
 <body>
 
 <header>
@@ -82,9 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
+<<<<<<< Updated upstream
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
 </footer>
+=======
+    <?php include 'footer.php'; ?>
+>>>>>>> Stashed changes
 
 </body>
 </html>

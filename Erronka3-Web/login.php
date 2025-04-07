@@ -26,6 +26,7 @@ function t($key) {
 </head>
 <body>
 
+<<<<<<< Updated upstream
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
@@ -36,6 +37,9 @@ function t($key) {
     <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
 </div>
 </header>
+=======
+<?php include 'header.php'; ?>
+>>>>>>> Stashed changes
 
 <div class="login-container">
     <div class="texto">
@@ -98,6 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<<<<<<< Updated upstream
 <?php if (!empty($error_message)): ?>
     <div class="error-message"><?= htmlspecialchars($error_message) ?></div>
 <?php endif; ?>
@@ -105,6 +110,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
 </footer>
+=======
+        
+        <?php include 'footer.php'; ?>
+>>>>>>> Stashed changes
 
 </body>
 </html>

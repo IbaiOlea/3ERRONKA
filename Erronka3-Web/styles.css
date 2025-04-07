@@ -13,6 +13,35 @@ body {
     max-width: none;
     margin: 0; 
 }
+.language-button img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    border-radius: 50%; /* Hace que las imágenes sean circulares */
+    border: 1px solid #ccc; /* Añade un borde */
+    padding: 2px; /* Espaciado interno */
+}
+
+.language-button img:hover {
+    border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
+}
+.language-selector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.language-selector button {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.language-selector button:hover {
+    background: #ddd;
+}
 
 header {
     background-color: #808080;

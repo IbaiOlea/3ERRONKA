@@ -1,124 +1,150 @@
 <?php
 session_start();
-include 'dbKonexioa.php'; // Archivo de conexión a la base de datos
+include 'dbKonexioa.php';
 
-// Consulta para obtener todos los productos
+// Determinar el idioma (por defecto "eu")
+if (isset($_GET['lang']) && in_array($_GET['lang'], ['eu', 'en'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+$lang = $_SESSION['lang'] ?? 'eu';
+
+// Cargar traducciones desde el archivo JSON
+$translations = json_decode(file_get_contents('itzulpenak.json'), true);
+
+// Función para obtener una traducción
+function t($key) {
+    global $translations, $lang;
+    return $translations[$lang][$key] ?? $key;
+}
+
+// Consulta para obtener los productos
 $sql = "SELECT ID, Izena, Kategoria, Prezioa, Stock, Argazkia FROM produktuak";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8">
-    <title>Medical Solutions Network - Productos</title>
+    <title><?= t('products') ?></title>
     <link rel="stylesheet" href="styles.css">
-    <?php require_once("head.php"); ?>
     <style>
-       .product-list {
-    display: flex;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente fila si no caben */
-    gap: 20px; /* Espaciado entre los elementos */
-    justify-content: center; /* Centra los productos horizontalmente */
-}
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
 
-.product-item {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px;
-    width: 250px; /* Ancho fijo para cada producto */
-    text-align: center;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para un diseño más atractivo */
-}
+        .product-item {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 400px; /* Altura fija para todas las tarjetas */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para las tarjetas */
+        }
 
-.product-item img {
-    max-width: 200px;
-    max-height: 200px;
-    margin-bottom: 10px; /* Espaciado debajo de la imagen */
-}
+        .product-item img {
+            width: 100%; /* Ancho completo del contenedor */
+            height: 150px; /* Alto fijo para todas las imágenes */
+            object-fit: cover; /* Ajusta la imagen para que llene el espacio sin deformarse */
+            margin-bottom: 10px; /* Espaciado inferior */
+            border-radius: 5px; /* Bordes redondeados para las imágenes */
+        }
 
-.product-buttons {
-    margin-top: 10px;
-}
+        .product-buttons {
+            margin-top: auto; /* Empuja el botón hacia la parte inferior */
+        }
 
-.buy-button, .add-to-cart-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 5px;
-    width: 100%; /* Hace que los botones ocupen todo el ancho del contenedor */
-}
+        .add-to-cart-button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease; /* Transición suave para el hover */
+        }
 
-.buy-button:hover {
-    background-color: #45a049;
-}
+        .add-to-cart-button:hover {
+            background-color: #007bb5;
+        }
 
-.add-to-cart-button {
-    background-color: #008CBA;
-}
+        .language-selector {
+            margin-top: 10px;
+            text-align: right;
+        }
 
-.add-to-cart-button:hover {
-    background-color: #007bb5;
-}
+        .language-button img {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            border-radius: 50%; /* Hace que las imágenes sean circulares */
+            border: 1px solid #ccc; /* Añade un borde */
+            padding: 2px; /* Espaciado interno */
+        }
+
+        .language-button img:hover {
+            border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
+        }
     </style>
 </head>
 <body>
 
 <header>
-<a href="main.php" class="logout-button">Orri printzipalara joan</a>
+    <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
-        
     
-        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
-    <?php elseif (isset($_SESSION['invitado'])): ?>
-        
-       
-        <a href="cesta.php" class="cart-button">Carrito (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+    <div class="language-selector">
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
+
+    <?php if (isset($_SESSION['invitado'])): ?>
+        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
     <?php endif; ?>
 </header>
 
-
 <main>
-    <h1>Produktuak</h1>
+    <h1><?= t('products') ?></h1>
     <div class="product-list">
         <?php
         if ($result && $result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '<div class="product-item">';
                 echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
-                echo '<p>Kategoria: ' . htmlspecialchars($row['Kategoria']) . '</p>';
-                echo '<p>Prezioa: ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
-                echo '<p>Stock: ' . htmlspecialchars($row['Stock']) . '</p>';
-                // Verificar si la imagen está definida y no está vacía
+                echo '<p>' . t('category') . ': ' . htmlspecialchars($row['Kategoria']) . '</p>';
+                echo '<p>' . t('price') . ': ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
+                echo '<p>' . t('stock') . ': ' . htmlspecialchars($row['Stock']) . '</p>';
                 if (!empty($row['Argazkia'])) {
-                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '" style="max-width: 200px;">';
+                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '">';
                 } else {
-                    echo '<p>Irudia ez dago eskuragarri.</p>';
+                    echo '<p>' . t('noImageAvailable') . '</p>';
                 }
-                // Botón de añadir a la cesta
                 echo '<div class="product-buttons">';
                 echo '<form action="cesta.php" method="POST" style="display: inline;">';
                 echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
-                echo '<button type="submit" class="add-to-cart-button">Gehitu saskira</button>';
+                echo '<button type="submit" class="add-to-cart-button">' . t('addToCart') . '</button>';
                 echo '</form>';
-                echo '</div>'; // Cierra product-buttons
-                echo '</div>'; // Cierra product-item
+                echo '</div>';
+                echo '</div>';
             }
         } else {
-            echo '<p>Ez dago produkturik datu-basean.</p>';
+            echo '<p>' . t('noProducts') . '</p>';
         }
         ?>
     </div>
 </main>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+    © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 
 </body>

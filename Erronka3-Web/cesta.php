@@ -1,6 +1,21 @@
 <?php 
-include 'dbKonexioa.php'; // Archivo de conexión a la base de datos
+include 'dbKonexioa.php';
 session_start();
+
+// Determinar el idioma (por defecto "eu")
+if (isset($_GET['lang']) && in_array($_GET['lang'], ['eu', 'en'])) {
+    $_SESSION['lang'] = $_GET['lang'];
+}
+$lang = $_SESSION['lang'] ?? 'eu';
+
+// Cargar traducciones desde el archivo JSON
+$translations = json_decode(file_get_contents('itzulpenak.json'), true);
+
+// Función para obtener una traducción
+function t($key) {
+    global $translations, $lang;
+    return $translations[$lang][$key] ?? $key;
+}
 
 // Inicializa el carrito si no existe
 if (!isset($_SESSION['cesta']) || !is_array($_SESSION['cesta'])) {
@@ -40,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buy'])) {
                     $stmt_update_stock->execute();
                 } else {
                     // Mostrar mensaje de error si no hay suficiente stock
-                    echo "<p>Ez dago stock nahikorik produkturako: " . htmlspecialchars($product['Izena']) . "</p>";
+                    echo "<p>" . t('notEnoughStock') . ": " . htmlspecialchars($product['Izena']) . "</p>";
                 }
             }
         }
@@ -80,15 +95,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
     header("Location: cesta.php");
     exit();
 }
+
 ?>
 <!DOCTYPE html>
-<html lang="eu">
+<html lang="<?= $lang ?>">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <title>Carrito</title>
+    <title><?= t('cart') ?></title>
     <style>
-        .buy-button {
+       .buy-button {
             background-color: #4CAF50;
             color: white;
             text-decoration: none;
@@ -121,28 +137,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
         .remove-button:hover {
             background-color: #d32f2f;
         }
+
+        .language-selector {
+            margin-top: 10px;
+            text-align: right;
+        }
+
+        .language-button img {
+            width: 40px;
+            height: 40px;
+            vertical-align: middle;
+            border-radius: 50%; /* Hace que las imágenes sean circulares */
+            border: 1px solid #ccc; /* Añade un borde */
+            padding: 2px; /* Espaciado interno */
+        }
+
+        .language-button img:hover {
+            border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
+        }
     </style>
 </head>
 <body>
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
+    
+    <div class="language-selector">
+    <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+    <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+</div>
+
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
-        <a href="produktuak.php" class="product-link">Zure produktuak</a>
-        <a href="logout.php" class="logout-button">Saioa itxi</a>
+        <a href="produktuak.php" class="product-link"><?= t('yourProducts') ?></a>
+        <a href="logout.php" class="logout-button"><?= t('logout') ?></a>
     <?php elseif (isset($_SESSION['invitado'])): ?>
-        <a href="login.php" class="logout-button">Saioa hasi</a>
-        <a href="productInvitedList.php" class="logout-button">Produktu zerrenda</a>
+        <a href="login.php" class="logout-button"><?= t('login') ?></a>
+        <a href="productInvitedList.php" class="logout-button"><?= t('products') ?></a>
     <?php endif; ?>
 </header>
 
 <div class="form-container">
-    <h1>Carrito</h1>
+    <h1><?= t('cart') ?></h1>
     <div class="form-section">
         <?php
         if (!empty($_SESSION['cesta'])) {
             echo '<ul>';
             foreach ($_SESSION['cesta'] as $product_id => $cantidad) {
-                // Consulta para obtener el nombre del producto
                 $sql = "SELECT Izena FROM produktuak WHERE ID = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $product_id);
@@ -152,36 +191,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
                 if ($result && $result->num_rows > 0) {
                     $product = $result->fetch_assoc();
                     echo '<li>';
-                    echo htmlspecialchars($product['Izena']) . ' - Kantitatea: ' . $cantidad;
-                    // Botón para eliminar el producto del carrito
+                    echo htmlspecialchars($product['Izena']) . ' - ' . t('quantity') . ': ' . $cantidad;
                     echo '<form action="cesta.php" method="POST" style="display: inline;">';
                     echo '<input type="hidden" name="remove_product_id" value="' . htmlspecialchars($product_id) . '">';
-                    echo '<button type="submit" class="remove-button">Kendu</button>';
+                    echo '<button type="submit" class="remove-button">' . t('remove') . '</button>';
                     echo '</form>';
                     echo '</li>';
-                } else {
-                    echo '<li>Producto desconocido (ID: ' . $product_id . ') - Cantidad: ' . $cantidad . '</li>';
                 }
             }
             echo '</ul>';
         } else {
-            echo '<p>Saskia hutsik dago.</p>';
+            echo '<p>' . t('emptyCart') . '</p>';
         }
         ?>
     </div>
     <?php if (!empty($_SESSION['cesta'])): ?>
         <form action="cesta.php" method="POST">
             <input type="hidden" name="buy" value="1">
-            <button type="submit" class="buy-button">Erosi</button>
+            <button type="submit" class="buy-button"><?= t('buy') ?></button>
         </form>
     <?php endif; ?>
     <?php if (isset($compra_realizada) && $compra_realizada): ?>
-        <p>Erosketa ondo egin da.</p>
+        <p><?= t('purchaseCompleted') ?></p>
     <?php endif; ?>
 </div>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+    © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 </body>
 </html>

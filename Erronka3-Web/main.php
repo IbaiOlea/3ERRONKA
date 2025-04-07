@@ -61,19 +61,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
 <!DOCTYPE html>
 <html lang="<?= $lang ?>">
 <head>
-<<<<<<< Updated upstream
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
     <title><?= t('pageTitle') ?></title>
-=======
-    <title>Datu Pertsonalak</title>
->>>>>>> Stashed changes
 </head>
 <body>
-<?php require_once("head.php"); ?>
-<?php include 'header.php'; ?>
+<header>
+    <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
 
-<<<<<<< Updated upstream
     <div class="language-selector">
     <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
     <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
@@ -91,12 +86,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
         <a href="login.php" class="logout-button"><?= t('login') ?></a>
     <?php endif; ?>
 </header>
-=======
-
-<div class="form-container">
-    <h1>Datu Pertsonalak</h1>
-    <div class="form-section"></div>
->>>>>>> Stashed changes
 
 <div class="form-container">
     <h1><?= t('pageTitle') ?></h1>
@@ -144,7 +133,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     </div>
 </div>
 
-<?php include 'footer.php'; ?>
+<footer>
+    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+</footer>
 
 </body>
 </html>

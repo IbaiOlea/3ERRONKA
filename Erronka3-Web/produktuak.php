@@ -101,7 +101,6 @@ if ($result_user->num_rows > 0) {
 </head>
 <body>
 
-<<<<<<< Updated upstream
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     
@@ -115,9 +114,6 @@ if ($result_user->num_rows > 0) {
         <a href="cesta.php" class="cart-button" data-i18n="cart">Saskia (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
     <?php endif; ?>
 </header>
-=======
-<?php include 'header.php'; ?>
->>>>>>> Stashed changes
 
 <main>
     <h1 data-i18n="yourProducts">Zure produktuak</h1>
@@ -151,7 +147,9 @@ if ($result_user->num_rows > 0) {
     </div>
 </main>
 
-<?php include 'footer.php'; ?>
+<footer>
+    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+</footer>
 
 </body>
 </html>

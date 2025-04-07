@@ -1,6 +1,7 @@
 <?php 
 session_start();
 include 'dbKonexioa.php';
+include 'functions.php'; // Incluir el archivo con la función del header
 
 // Determinar el idioma (por defecto "eu")
 if (isset($_GET['lang']) && in_array($_GET['lang'], ['eu', 'en'])) {
@@ -64,24 +65,37 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
     <title><?= t('pageTitle') ?></title>
+    <script>
+        // Cargar colores desde conf.xml y localStorage al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainColor = localStorage.getItem('--main-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->mainColor) ?>';
+            const footerColor = localStorage.getItem('--footer-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->footerColor) ?>';
+            document.documentElement.style.setProperty('--main-color', mainColor);
+            document.documentElement.style.setProperty('--footer-color', footerColor);
+            document.getElementById('mainColor').value = mainColor;
+            document.getElementById('footerColor').value = footerColor;
+        });
+    </script>
 </head>
 <body>
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
 
     <div class="language-selector">
-    <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
-    <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
-</div>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
 
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
         <a href="produktuak.php" class="product-link"><?= t('yourProducts') ?></a>
         <a href="logout.php" class="logout-button"><?= t('logout') ?></a>
         <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
     <?php elseif (isset($_SESSION['invitado']) && $_SESSION['invitado']): ?>
         <a href="login.php" class="logout-button"><?= t('login') ?></a>
         <a href="productInvitedList.php" class="product-link"><?= t('products') ?></a>
         <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
     <?php else: ?>
         <a href="login.php" class="logout-button"><?= t('login') ?></a>
     <?php endif; ?>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'dbKonexioa.php';
+include 'functions.php'; // Incluir el archivo con la función del header
 
 // Determinar el idioma (por defecto "eu")
 if (isset($_GET['lang']) && in_array($_GET['lang'], ['eu', 'en'])) {
@@ -27,6 +28,14 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <title><?= t('products') ?></title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainColor = localStorage.getItem('--main-color');
+            const footerColor = localStorage.getItem('--footer-color');
+            if (mainColor) document.documentElement.style.setProperty('--main-color', mainColor);
+            if (footerColor) document.documentElement.style.setProperty('--footer-color', footerColor);
+        });
+    </script>
     <style>
         .product-list {
             display: flex;
@@ -109,6 +118,7 @@ $result = $conn->query($sql);
 
     <?php if (isset($_SESSION['invitado'])): ?>
         <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
     <?php endif; ?>
 </header>
 

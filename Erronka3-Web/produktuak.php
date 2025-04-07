@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'dbKonexioa.php';
+include 'functions.php'; // Incluir el archivo con la función del header
 
 if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == 0) {
     header("Location: login.php");
@@ -51,7 +52,17 @@ if ($result_user->num_rows > 0) {
     <meta charset="UTF-8">
     <title data-i18n="yourProducts">Medical Solutions Network - Produktuak</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="translations.js"></script>
+    <script>
+        // Cargar colores desde conf.xml y localStorage al cargar la página
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainColor = localStorage.getItem('--main-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->mainColor) ?>';
+            const footerColor = localStorage.getItem('--footer-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->footerColor) ?>';
+            document.documentElement.style.setProperty('--main-color', mainColor);
+            document.documentElement.style.setProperty('--footer-color', footerColor);
+            document.getElementById('mainColor').value = mainColor;
+            document.getElementById('footerColor').value = footerColor;
+        });
+    </script>
     <style>
        .product-container {
             display: flex;
@@ -112,6 +123,7 @@ if ($result_user->num_rows > 0) {
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
         <a href="main.php" class="logout-button" data-i18n="goToMain">Orri printzipalara joan</a>
         <a href="cesta.php" class="cart-button" data-i18n="cart">Saskia (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="konfigurazioa.php" class="config-button"data-i18n="goToConfig">Konfigurazioa</a>
     <?php endif; ?>
 </header>
 

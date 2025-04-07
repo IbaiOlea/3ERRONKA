@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+--main-color: #808080; /* Color por defecto del header */
+--footer-color: #808080; /* Color por defecto del footer */
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -44,7 +48,7 @@ body {
 }
 
 header {
-    background-color: #808080;
+    background-color: var(--main-color);
     color: white;
     padding: 20px;
     font-size: 24px;
@@ -130,6 +134,21 @@ header img {
     position: absolute;
     left: 20px;
     text-decoration: none;
+}
+.config-button {
+    background-color: #008CBA; 
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin-left: 10px;
+}
+.config-button:hover {
+    background-color: #007bb5; 
 }
 .guest-button:hover {
     background-color: red;
@@ -240,7 +259,7 @@ main {
     line-height: 1.5;
 }
 footer {
-    background-color: #808080;
+    background-color: var(--footer-color);
     color: white;
     padding: 10px;
     font-size: 14px;

@@ -30,7 +30,8 @@
         "category": "Category",
         "price": "Price",
         "stock": "Stock",
-        "addToCart": "Add to cart"
+        "addToCart": "Add to cart",
+        "configuration": "Configuration"
     },
     "eu": {
         "pageTitle": "Datu Pertsonalak",
@@ -63,6 +64,7 @@
         "category": "Kategoria",
         "price": "Prezioa",
         "stock": "Stock",
-        "addToCart": "Gehitu saskira"
+        "addToCart": "Gehitu saskira",
+        "configuration": "Konfigurazioa"
     }
 }

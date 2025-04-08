@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 :root {
---main-color: #808080; /* Color por defecto del header */
---footer-color: #808080; /* Color por defecto del footer */
+    --main-color: #808080; /* Color por defecto del header */
+    --footer-color: #808080; /* Color por defecto del footer */
 }
 body {
     font-family: Arial, sans-serif;

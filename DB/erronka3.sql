@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: erronka3
 -- ------------------------------------------------------
--- Server version	8.0.41
+-- Server version	8.0.39
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,8 +31,8 @@ CREATE TABLE `erabiltzaileak` (
   `Jaiotze_data` date DEFAULT NULL,
   `Sexua` varchar(45) DEFAULT NULL,
   `Altuera` int DEFAULT NULL,
-  `Pisua` decimal(3,1) DEFAULT NULL,
-  `IMC` double DEFAULT NULL,
+  `Pisua` decimal(4,1) DEFAULT NULL,
+  `IMC` decimal(3,1) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `posta_elektronikoa` (`Posta_elektronikoa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -44,7 +44,7 @@ CREATE TABLE `erabiltzaileak` (
 
 LOCK TABLES `erabiltzaileak` WRITE;
 /*!40000 ALTER TABLE `erabiltzaileak` DISABLE KEYS */;
-INSERT INTO `erabiltzaileak` VALUES (1,'Almudena','Cortés','almudena.cortes@saludnatural.com','verde123','1985-04-12','F',165,68.0,24.977043158861342),(2,'Bernardo','Soler','bernardo.soler@saludnatural.com','natura456','1979-11-03','M',178,75.0,23.7),(3,'Carla','Rivas','carla.rivas@saludnatural.com','bio789','1992-07-19','F',160,52.0,20.3),(4,'Diego','Molina','diego.molina@saludnatural.com','salud321','1988-03-25','M',172,68.0,23),(5,'Elena','Fuentes','elena.fuentes@saludnatural.com','verde654','1990-08-30','F',158,54.0,21.6),(6,'Federico','Navarro','federico.navarro@saludnatural.com','natura987','1983-12-05','M',180,80.0,24.7),(7,'Gloria','Paredes','gloria.paredes@saludnatural.com','bio159','1993-05-15','F',162,55.0,21),(8,'Héctor','Vega','hector.vega@saludnatural.com','salud753','1987-09-22','M',175,70.0,22.9),(9,'Isabel','Luna','isabel.luna@saludnatural.com','verde852','1991-01-18','F',160,53.0,20.8),(10,'Javier','Romero','javier.romero@saludnatural.com','natura4567','1986-06-07','M',182,78.0,23.5),(11,'Karla','Cano','karla.cano@saludnatural.com','bio135','1994-10-12','F',159,52.5,20.7),(12,'Luis','Del Valle','luis.delvalle@saludnatural.com','salud246','1980-02-28','M',177,72.0,22.9),(13,'Marina','Cruz','marina.cruz@saludnatural.com','verde369','1993-11-17','F',163,56.0,21.1),(14,'Nicolás','Ibarra','nicolas.ibarra@saludnatural.com','natura147','1989-04-03','M',174,68.0,22.5),(15,'Olga','Reyes','olga.reyes@saludnatural.com','bio258','1991-08-09','F',160,54.0,21.1),(16,'Pablo','Sanz','pablo.sanz@saludnatural.com','salud3698','1982-12-20','M',180,76.0,23.5),(17,'Quintina','Morales','quintina.morales@saludnatural.com','verde9876','1990-03-30','F',162,55.5,21.1),(18,'Ramón','Giménez','ramon.gimenez@saludnatural.com','natura3210','1984-07-04','M',176,73.0,23.6),(19,'Sara','Ortega','sara.ortega@saludnatural.com','bio741','1992-09-15','F',161,53.5,20.5),(20,'Tomás','Herrera','tomas.herrera@saludnatural.com','salud8520','1987-05-21','M',178,74.0,23.3),(21,'Ursula','Méndez','ursula.mendez@saludnatural.com','verde963','1993-12-11','F',159,52.0,20.5),(22,'Víctor','López','victor.lopez@saludnatural.com','natura1597','1981-06-26','M',175,70.0,22.9),(23,'Wanda','Soler','wanda.soler@saludnatural.com','bio7531','1994-02-14','F',160,53.0,20.8),(24,'Xavier','Ruiz','xavier.ruiz@saludnatural.com','salud357','1985-08-18','M',180,78.0,24.1),(25,'Yolanda','Gil','yolanda.gil@saludnatural.com','verde951','1990-11-27','F',163,57.0,21.4),(26,'Zacarías','Ferrer','zacarias.ferrer@saludnatural.com','natura8521','1983-03-09','M',177,71.0,22.7),(27,'Amalia','Bravo','amalia.bravo@saludnatural.com','bio4561','1989-10-05','F',162,56.5,21.5),(28,'Benjamín','Vidal','benjamin.vidal@saludnatural.com','salud6541','1986-12-31','M',175,69.5,22.6),(29,'Estebe','Ormazabal','estebe.ormazabal@saludnatural.com','aaaaaaaaa',NULL,NULL,NULL,NULL,0);
+INSERT INTO `erabiltzaileak` VALUES (1,'Almudena','Cortés','almudena.cortes@saludnatural.com','verde123','1985-04-12','F',165,68.0,25.0),(2,'Bernardo','Soler','bernardo.soler@saludnatural.com','natura456','1979-11-03','M',178,75.0,23.7),(3,'Carla','Rivas','carla.rivas@saludnatural.com','bio789','1992-07-19','F',160,52.0,20.3),(4,'Diego','Molina','diego.molina@saludnatural.com','salud321','1988-03-25','M',172,68.0,23.0),(5,'Elena','Fuentes','elena.fuentes@saludnatural.com','verde654','1990-08-30','F',158,54.0,21.6),(6,'Federico','Navarro','federico.navarro@saludnatural.com','natura987','1983-12-05','M',180,80.0,24.7),(7,'Gloria','Paredes','gloria.paredes@saludnatural.com','bio159','1993-05-15','F',162,55.0,21.0),(8,'Héctor','Vega','hector.vega@saludnatural.com','salud753','1987-09-22','M',175,70.0,22.9),(9,'Isabel','Luna','isabel.luna@saludnatural.com','verde852','1991-01-18','F',160,53.0,20.8),(10,'Javier','Romero','javier.romero@saludnatural.com','natura4567','1986-06-07','M',182,78.0,23.5),(11,'Karla','Cano','karla.cano@saludnatural.com','bio135','1994-10-12','F',159,52.5,20.7),(12,'Luis','Del Valle','luis.delvalle@saludnatural.com','salud246','1980-02-28','M',177,72.0,22.9),(13,'Marina','Cruz','marina.cruz@saludnatural.com','verde369','1993-11-17','F',163,56.0,21.1),(14,'Nicolás','Ibarra','nicolas.ibarra@saludnatural.com','natura147','1989-04-03','M',174,68.0,22.5),(15,'Olga','Reyes','olga.reyes@saludnatural.com','bio258','1991-08-09','F',160,54.0,21.1),(16,'Pablo','Sanz','pablo.sanz@saludnatural.com','salud3698','1982-12-20','M',180,76.0,23.5),(17,'Quintina','Morales','quintina.morales@saludnatural.com','verde9876','1990-03-30','F',162,55.5,21.1),(18,'Ramón','Giménez','ramon.gimenez@saludnatural.com','natura3210','1984-07-04','M',176,73.0,23.6),(19,'Sara','Ortega','sara.ortega@saludnatural.com','bio741','1992-09-15','F',161,53.5,20.5),(20,'Tomás','Herrera','tomas.herrera@saludnatural.com','salud8520','1987-05-21','M',178,74.0,23.3),(21,'Ursula','Méndez','ursula.mendez@saludnatural.com','verde963','1993-12-11','F',159,52.0,20.5),(22,'Víctor','López','victor.lopez@saludnatural.com','natura1597','1981-06-26','M',175,70.0,22.9),(23,'Wanda','Soler','wanda.soler@saludnatural.com','bio7531','1994-02-14','F',160,53.0,20.8),(24,'Xavier','Ruiz','xavier.ruiz@saludnatural.com','salud357','1985-08-18','M',180,78.0,24.1),(25,'Yolanda','Gil','yolanda.gil@saludnatural.com','verde951','1990-11-27','F',163,57.0,21.4),(26,'Zacarías','Ferrer','zacarias.ferrer@saludnatural.com','natura8521','1983-03-09','M',177,71.0,22.7),(27,'Amalia','Bravo','amalia.bravo@saludnatural.com','bio4561','1989-10-05','F',162,56.5,21.5),(28,'Benjamín','Vidal','benjamin.vidal@saludnatural.com','salud6541','1986-12-31','M',175,69.5,22.6),(29,'Estebe','Ormazabal','estebe.ormazabal@saludnatural.com','aaaaaaaaa',NULL,NULL,NULL,NULL,0.0);
 /*!40000 ALTER TABLE `erabiltzaileak` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ CREATE TABLE `fakturak` (
   `ErabiltzaileID` int NOT NULL,
   `ProduktuaID` int NOT NULL,
   `Erosketa_data` date DEFAULT NULL,
-  `Kantitatea` int NOT NULL,
+  `Kantitatea` double NOT NULL,
   `Prezioa` decimal(10,2) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `fakturak_ibfk_2_idx` (`ProduktuaID`),
@@ -80,40 +80,6 @@ LOCK TABLES `fakturak` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gomendazioak`
---
-
-DROP TABLE IF EXISTS `gomendazioak`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gomendazioak` (
-  `ID_gomendazioak` int NOT NULL AUTO_INCREMENT,
-  `LangileID` int NOT NULL,
-  `ErabiltzaileID` int NOT NULL,
-  `ProduktuID` int NOT NULL,
-  `KategoriaGomendioa` varchar(100) DEFAULT NULL,
-  `ProduktuGomendioa` char(100) DEFAULT NULL,
-  `EskaeraData` date DEFAULT NULL,
-  PRIMARY KEY (`ID_gomendazioak`),
-  KEY `fk_erabiltzaile_eskaera_idx` (`ErabiltzaileID`),
-  KEY `fk_langilea_eskaera_idx` (`LangileID`),
-  KEY `fk_langilea_eskaera_idx1` (`ProduktuID`),
-  CONSTRAINT `fk_erabiltzaile_eskaera` FOREIGN KEY (`ErabiltzaileID`) REFERENCES `erabiltzaileak` (`ID`),
-  CONSTRAINT `fk_langilea_eskaera` FOREIGN KEY (`LangileID`) REFERENCES `langileak` (`ID`),
-  CONSTRAINT `fk_produktua_eskaera` FOREIGN KEY (`ProduktuID`) REFERENCES `produktuak` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gomendazioak`
---
-
-LOCK TABLES `gomendazioak` WRITE;
-/*!40000 ALTER TABLE `gomendazioak` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gomendazioak` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `hornitzaileak`
 --
 
@@ -124,10 +90,10 @@ CREATE TABLE `hornitzaileak` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `Izena-enpresa` varchar(45) DEFAULT NULL,
   `Izena-gerente` varchar(45) DEFAULT NULL,
-  `Telefono-enpresa` int DEFAULT NULL,
-  `Telefono-gerente` int DEFAULT NULL,
+  `Telefono-enpresa` char(20) DEFAULT NULL,
+  `Telefono-gerente` char(20) DEFAULT NULL,
   `Lokalizazioa` varchar(45) DEFAULT NULL,
-  `ProduktuKategoria` varchar(45) DEFAULT NULL,
+  `ProduktuKategoria` tinytext,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -138,7 +104,7 @@ CREATE TABLE `hornitzaileak` (
 
 LOCK TABLES `hornitzaileak` WRITE;
 /*!40000 ALTER TABLE `hornitzaileak` DISABLE KEYS */;
-INSERT INTO `hornitzaileak` VALUES (1,'BizitzaOsasungarria','Juan Martínez',911223344,600201,'Madril','Ekologikoa'),(2,'EkologiaElikagaiak','María Rodríguez',912334455,600202,'Bartzelona','Frutak eta Barazkiak'),(3,'NaturaBizia','Carlos López',913445566,600203,'Valentzia','Zerealak eta Lekaleak'),(4,'BioElikadura','Ana García',914556677,600204,'Sevilla','Esneki Ekologikoak'),(5,'ArimaBerdea','Luis Fernández',915667788,600205,'Bilbo','Edari Naturalak'),(6,'ZaporeGarbia','Carmen Sánchez',916778899,600206,'Zaragoza','Ezti eta Eratorriak'),(7,'FreskotasunOsoa','Jorge Gómez',917889900,600207,'Malaga','Produktu Freskoak'),(8,'AleOsoa','Lucía Díaz',918990011,600208,'Oviedo','Zereal Integralak'),(9,'BaratzeOsasuntsua','Miguel Ruiz',919001122,600209,'Vigo','Frutak eta Barazkiak'),(10,'OrgaBizia','Elena Morales',920112233,600210,'Alacant','Produktu Ekologikoak'),(11,'LurNaturala','Sergio Jiménez',921223344,600211,'Madril','Haragi eta Arrain Ekologikoak'),(12,'ZaporeNaturala','Isabel Ortega',922334455,600212,'Bartzelona','Olioak eta Ozpinak'),(13,'EkologiZaporea','Roberto Pérez',923445566,600213,'Valentzia','Lekaleak eta Zerealak'),(14,'JatorriGarbia','Patricia Martín',924556677,600214,'Sevilla','Ezti eta Eratorriak'),(15,'BerdeBizia','Francisco Herrera',925667788,600215,'Bilbo','Frutak eta Barazkiak'),(16,'NaturaMahaiGainean','Marta Castro',926778899,600216,'Zaragoza','Edari Naturalak'),(17,'ErroOsasuntsua','Diego Romero',927889900,600217,'Malaga','Zereal Integralak'),(18,'JatorriPuroa','Verónica Rojas',928990011,600218,'Oviedo','Lekaleak'),(19,'EkologiJatorria','Álvaro González',929001122,600219,'Vigo','Produktu Ekologikoak'),(20,'BizitzaIntegrala','Sofía Díaz',930112233,600220,'Alacant','Superelikagaiak'),(21,'OsasunEtaZaporea','Andrés Molina',931223344,600221,'Madril','Edari Naturalak'),(22,'NaturaPlus','Claudia Ruiz',932334455,600222,'Bartzelona','Frutak eta Barazkiak'),(23,'EkologiBizitza','Fernando García',933445566,600223,'Valentzia','Zerealak eta Lekaleak'),(24,'ZaporePuroa','Raquel López',934556677,600224,'Sevilla','Olioak eta Ozpinak'),(25,'BerdeIntegrala','Ignacio Sánchez',935667788,600225,'Bilbo','Superelikagaiak'),(26,'ZaporeBizia','Beatriz Jiménez',936778899,600226,'Zaragoza','Lekaleak eta Zerealak'),(27,'JatorriNaturala','Manuel Torres',937889900,600227,'Malaga','Produktu Ekologikoak'),(28,'EkologiLurra','Susana Vargas',938990011,600228,'Oviedo','Frutak eta Barazkiak'),(29,'NaturaBizitza','Roberto Martínez',939001122,600229,'Vigo','Zereal Integralak'),(30,'OsasunNaturala','Laura Fernández',940112233,600230,'Alacant','Superelikagaiak');
+INSERT INTO `hornitzaileak` VALUES (1,'BizitzaOsasungarria','Juan Martínez','911223344','600201','Madril','Ekologikoa'),(2,'EkologiaElikagaiak','María Rodríguez','912334455','600202','Bartzelona','Frutak eta Barazkiak'),(3,'NaturaBizia','Carlos López','913445566','600203','Valentzia','Zerealak eta Lekaleak'),(4,'BioElikadura','Ana García','914556677','600204','Sevilla','Esneki Ekologikoak'),(5,'ArimaBerdea','Luis Fernández','915667788','600205','Bilbo','Edari Naturalak'),(6,'ZaporeGarbia','Carmen Sánchez','916778899','600206','Zaragoza','Ezti eta Eratorriak'),(7,'FreskotasunOsoa','Jorge Gómez','917889900','600207','Malaga','Produktu Freskoak'),(8,'AleOsoa','Lucía Díaz','918990011','600208','Oviedo','Zereal Integralak'),(9,'BaratzeOsasuntsua','Miguel Ruiz','919001122','600209','Vigo','Frutak eta Barazkiak'),(10,'OrgaBizia','Elena Morales','920112233','600210','Alacant','Produktu Ekologikoak'),(11,'LurNaturala','Sergio Jiménez','921223344','600211','Madril','Haragi eta Arrain Ekologikoak'),(12,'ZaporeNaturala','Isabel Ortega','922334455','600212','Bartzelona','Olioak eta Ozpinak'),(13,'EkologiZaporea','Roberto Pérez','923445566','600213','Valentzia','Lekaleak eta Zerealak'),(14,'JatorriGarbia','Patricia Martín','924556677','600214','Sevilla','Ezti eta Eratorriak'),(15,'BerdeBizia','Francisco Herrera','925667788','600215','Bilbo','Frutak eta Barazkiak'),(16,'NaturaMahaiGainean','Marta Castro','926778899','600216','Zaragoza','Edari Naturalak'),(17,'ErroOsasuntsua','Diego Romero','927889900','600217','Malaga','Zereal Integralak'),(18,'JatorriPuroa','Verónica Rojas','928990011','600218','Oviedo','Lekaleak'),(19,'EkologiJatorria','Álvaro González','929001122','600219','Vigo','Produktu Ekologikoak'),(20,'BizitzaIntegrala','Sofía Díaz','930112233','600220','Alacant','Superelikagaiak'),(21,'OsasunEtaZaporea','Andrés Molina','931223344','600221','Madril','Edari Naturalak'),(22,'NaturaPlus','Claudia Ruiz','932334455','600222','Bartzelona','Frutak eta Barazkiak'),(23,'EkologiBizitza','Fernando García','933445566','600223','Valentzia','Zerealak eta Lekaleak'),(24,'ZaporePuroa','Raquel López','934556677','600224','Sevilla','Olioak eta Ozpinak'),(25,'BerdeIntegrala','Ignacio Sánchez','935667788','600225','Bilbo','Superelikagaiak'),(26,'ZaporeBizia','Beatriz Jiménez','936778899','600226','Zaragoza','Lekaleak eta Zerealak'),(27,'JatorriNaturala','Manuel Torres','937889900','600227','Malaga','Produktu Ekologikoak'),(28,'EkologiLurra','Susana Vargas','938990011','600228','Oviedo','Frutak eta Barazkiak'),(29,'NaturaBizitza','Roberto Martínez','939001122','600229','Vigo','Zereal Integralak'),(30,'OsasunNaturala','Laura Fernández','940112233','600230','Alacant','Superelikagaiak');
 /*!40000 ALTER TABLE `hornitzaileak` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -215,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-04-01 12:41:39
+-- Dump completed on 2025-04-08 20:25:24

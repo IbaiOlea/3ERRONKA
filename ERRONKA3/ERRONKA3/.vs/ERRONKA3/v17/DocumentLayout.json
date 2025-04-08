@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\dbconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\formmainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formmainmenu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formmainmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\formdatos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formdatos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\formlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\erronka3\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -21,18 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\erronka3\\formdatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formdatos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\formlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\formdatos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\formdatos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|c:\\xampp\\htdocs\\3erronka\\erronka3\\erronka3\\erronka3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64703A03-6884-4F79-BE9D-3939F585F8C8}|ERRONKA3\\ERRONKA3.csproj|solutionrelative:erronka3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,17 +47,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "FormLogin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormLogin.cs",
-              "RelativeDocumentMoniker": "ERRONKA3\\FormLogin.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormLogin.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ERRONKA3\\FormLogin.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T18:06:46.864Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "FormDatos.Designer.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormDatos.Designer.cs",
               "RelativeDocumentMoniker": "ERRONKA3\\FormDatos.Designer.cs",
@@ -69,30 +54,34 @@
               "RelativeToolTip": "ERRONKA3\\FormDatos.Designer.cs",
               "ViewState": "AgIAAH4AAAAAAAAAAAAYwBQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T07:59:47.068Z"
+              "WhenOpened": "2025-04-01T07:59:47.068Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "FormLogin.Designer.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormLogin.Designer.cs",
               "RelativeDocumentMoniker": "ERRONKA3\\FormLogin.Designer.cs",
               "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormLogin.Designer.cs",
               "RelativeToolTip": "ERRONKA3\\FormLogin.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:47:27.579Z"
+              "WhenOpened": "2025-03-31T07:47:27.579Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FormDatos.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormDatos.cs",
-              "RelativeDocumentMoniker": "ERRONKA3\\FormDatos.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormDatos.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ERRONKA3\\FormDatos.cs [Dise\u00F1o]",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\Program.cs",
+              "RelativeDocumentMoniker": "ERRONKA3\\Program.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\Program.cs",
+              "RelativeToolTip": "ERRONKA3\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T20:20:29.439Z"
+              "WhenOpened": "2025-03-31T07:47:33.294Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -102,7 +91,7 @@
               "RelativeDocumentMoniker": "ERRONKA3\\DBConnection.cs",
               "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\DBConnection.cs",
               "RelativeToolTip": "ERRONKA3\\DBConnection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAB/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T07:47:39.379Z",
               "EditorCaption": ""
@@ -110,38 +99,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "FormMainMenu.cs",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormMainMenu.cs",
-              "RelativeDocumentMoniker": "ERRONKA3\\FormMainMenu.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormMainMenu.cs",
-              "RelativeToolTip": "ERRONKA3\\FormMainMenu.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T18:46:03.563Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "FormMainMenu.Designer.cs",
               "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormMainMenu.Designer.cs",
               "RelativeDocumentMoniker": "ERRONKA3\\FormMainMenu.Designer.cs",
               "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormMainMenu.Designer.cs",
               "RelativeToolTip": "ERRONKA3\\FormMainMenu.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T18:46:04.268Z"
+              "WhenOpened": "2025-04-08T08:15:30.838Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\Program.cs",
-              "RelativeDocumentMoniker": "ERRONKA3\\Program.cs",
-              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\Program.cs",
-              "RelativeToolTip": "ERRONKA3\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAtAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "FormLogin.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormLogin.cs",
+              "RelativeDocumentMoniker": "ERRONKA3\\FormLogin.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormLogin.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ERRONKA3\\FormLogin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T07:47:33.294Z"
+              "WhenOpened": "2025-04-06T18:06:46.864Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormDatos.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormDatos.cs",
+              "RelativeDocumentMoniker": "ERRONKA3\\FormDatos.cs",
+              "ToolTip": "C:\\xampp\\htdocs\\3ERRONKA\\ERRONKA3\\ERRONKA3\\ERRONKA3\\FormDatos.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ERRONKA3\\FormDatos.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T20:20:29.439Z"
             }
           ]
         }

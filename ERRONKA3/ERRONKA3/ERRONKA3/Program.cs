@@ -10,9 +10,7 @@ namespace ERRONKA3
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            // Inicia la aplicación mostrando primero el FormLogin
-            Application.Run(new FormLogin());
+            Application.Run(new FormLogin()); // Inicia desde el login
         }
     }
 }

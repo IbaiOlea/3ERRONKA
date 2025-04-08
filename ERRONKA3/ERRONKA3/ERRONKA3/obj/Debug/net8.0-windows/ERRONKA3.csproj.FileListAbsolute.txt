@@ -1,4 +1,3 @@
-C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.Form1.resources
 C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.FormDatos.resources
 C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.FormLogin.resources
 C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.csproj.GenerateResource.cache
@@ -35,3 +34,4 @@ C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ref
 C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.pdb
 C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.genruntimeconfig.cache
 C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ref\ERRONKA3.dll
+C:\xampp\htdocs\3ERRONKA\ERRONKA3\ERRONKA3\ERRONKA3\obj\Debug\net8.0-windows\ERRONKA3.FormMainMenu.resources

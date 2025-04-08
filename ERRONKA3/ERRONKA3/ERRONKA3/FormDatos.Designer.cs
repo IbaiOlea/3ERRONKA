@@ -2,6 +2,7 @@
 
 namespace ERRONKA3
 {
+
     partial class FormDatos
     {
         private System.ComponentModel.IContainer components = null;
@@ -40,7 +41,7 @@ namespace ERRONKA3
             // lblJaiotzeData
             // 
             lblJaiotzeData.AutoSize = true;
-            lblJaiotzeData.Location = new Point(237, 153);
+            lblJaiotzeData.Location = new Point(528, 132);
             lblJaiotzeData.Name = "lblJaiotzeData";
             lblJaiotzeData.Size = new Size(94, 20);
             lblJaiotzeData.TabIndex = 0;
@@ -48,7 +49,7 @@ namespace ERRONKA3
             // 
             // dtpJaiotzeData
             // 
-            dtpJaiotzeData.Location = new Point(359, 146);
+            dtpJaiotzeData.Location = new Point(650, 125);
             dtpJaiotzeData.Name = "dtpJaiotzeData";
             dtpJaiotzeData.Size = new Size(200, 27);
             dtpJaiotzeData.TabIndex = 1;
@@ -56,7 +57,7 @@ namespace ERRONKA3
             // lblSexua
             // 
             lblSexua.AutoSize = true;
-            lblSexua.Location = new Point(271, 204);
+            lblSexua.Location = new Point(571, 183);
             lblSexua.Name = "lblSexua";
             lblSexua.Size = new Size(51, 20);
             lblSexua.TabIndex = 2;
@@ -67,7 +68,7 @@ namespace ERRONKA3
             cbSexua.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSexua.FormattingEnabled = true;
             cbSexua.Items.AddRange(new object[] { "M", "F" });
-            cbSexua.Location = new Point(359, 204);
+            cbSexua.Location = new Point(650, 183);
             cbSexua.Name = "cbSexua";
             cbSexua.Size = new Size(200, 28);
             cbSexua.TabIndex = 3;
@@ -75,15 +76,15 @@ namespace ERRONKA3
             // lblAltuera
             // 
             lblAltuera.AutoSize = true;
-            lblAltuera.Location = new Point(271, 258);
+            lblAltuera.Location = new Point(528, 237);
             lblAltuera.Name = "lblAltuera";
-            lblAltuera.Size = new Size(60, 20);
+            lblAltuera.Size = new Size(101, 20);
             lblAltuera.TabIndex = 4;
-            lblAltuera.Text = "Altuera:";
+            lblAltuera.Text = "Altuera: (XXX)";
             // 
             // txtAltuera
             // 
-            txtAltuera.Location = new Point(359, 258);
+            txtAltuera.Location = new Point(650, 237);
             txtAltuera.Name = "txtAltuera";
             txtAltuera.Size = new Size(200, 27);
             txtAltuera.TabIndex = 5;
@@ -91,22 +92,22 @@ namespace ERRONKA3
             // lblPisua
             // 
             lblPisua.AutoSize = true;
-            lblPisua.Location = new Point(271, 314);
+            lblPisua.Location = new Point(539, 293);
             lblPisua.Name = "lblPisua";
-            lblPisua.Size = new Size(46, 20);
+            lblPisua.Size = new Size(90, 20);
             lblPisua.TabIndex = 6;
-            lblPisua.Text = "Pisua:";
+            lblPisua.Text = "Pisua: (XX,X)";
             // 
             // txtPisua
             // 
-            txtPisua.Location = new Point(359, 314);
+            txtPisua.Location = new Point(650, 293);
             txtPisua.Name = "txtPisua";
             txtPisua.Size = new Size(200, 27);
             txtPisua.TabIndex = 7;
             // 
             // btnEnviar
             // 
-            btnEnviar.Location = new Point(359, 377);
+            btnEnviar.Location = new Point(650, 356);
             btnEnviar.Name = "btnEnviar";
             btnEnviar.Size = new Size(200, 36);
             btnEnviar.TabIndex = 8;
@@ -116,7 +117,7 @@ namespace ERRONKA3
             // 
             // FormDatos
             // 
-            ClientSize = new Size(940, 487);
+            ClientSize = new Size(1610, 538);
             Controls.Add(btnEnviar);
             Controls.Add(txtPisua);
             Controls.Add(lblPisua);

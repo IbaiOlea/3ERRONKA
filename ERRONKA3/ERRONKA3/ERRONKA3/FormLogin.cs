@@ -63,5 +63,10 @@ namespace ERRONKA3
                 }
             }
         }
+
+        private void txtCorreo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

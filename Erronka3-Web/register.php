@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+© 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 
 </body>

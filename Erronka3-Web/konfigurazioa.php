@@ -12,6 +12,11 @@ $lang = $_SESSION['lang'] ?? 'eu';
 // Cargar traducciones desde el archivo JSON
 $translations = json_decode(file_get_contents('itzulpenak.json'), true);
 
+// Verificar si las traducciones se cargaron correctamente
+if (!$translations) {
+    die('Error: No se pudieron cargar las traducciones.');
+}
+
 // Función para obtener una traducción
 function t($key) {
     global $translations, $lang;
@@ -64,12 +69,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php renderHeader($lang, $_SESSION); ?>
 
 <div class="form-container">
-    <h1><?= t('Konfigurazioa') ?></h1>
+    <h1><?= t('configurationTitle') ?></h1>
     <form method="POST" action="">
         <div class="form-section">
             <div>
                 <div>
-                    <label for="mainColor"><?= t('Header Color') ?>:</label>
+                    <label for="mainColor"><?= t('headerColor') ?>:</label>
                 </div>
                 <div>
                     <input type="color" id="mainColor" name="mainColor" />
@@ -77,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div>
                 <div>
-                    <label for="footerColor"><?= t('Footer Color') ?>:</label>
+                    <label for="footerColor"><?= t('footerColor') ?>:</label>
                 </div>
                 <div>
                     <input type="color" id="footerColor" name="footerColor" />
@@ -85,15 +90,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
         <div class="form-section">
-            <button type="submit" class="button"><?= t('Save Colors') ?></button>
+            <button type="submit" class="button"><?= t('saveColors') ?></button>
             <br>
-            <button type="button" onclick="setDefaultColors()" class="button"><?= t('Reset to Default Colors') ?></button>
+            <button type="button" onclick="setDefaultColors()" class="button"><?= t('resetToDefaultColors') ?></button>
         </div>
     </form>
 </div>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+    © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 
 <script>

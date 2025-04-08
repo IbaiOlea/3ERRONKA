@@ -148,7 +148,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
 </div>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+© 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 
 </body>

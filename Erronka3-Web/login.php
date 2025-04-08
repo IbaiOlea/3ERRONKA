@@ -35,6 +35,7 @@ function t($key) {
     <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
     <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
 </div>
+
 </header>
 
 <div class="login-container">
@@ -103,8 +104,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php endif; ?>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+© 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
+<script>
+function toggleMenu() {
+    const menu = document.getElementById('sideMenu');
+    menu.classList.toggle('show');
+}
+</script>
+
 
 </body>
 </html>

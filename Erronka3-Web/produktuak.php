@@ -160,7 +160,7 @@ if ($result_user->num_rows > 0) {
 </main>
 
 <footer>
-    © 2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta
+© 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 
 </body>

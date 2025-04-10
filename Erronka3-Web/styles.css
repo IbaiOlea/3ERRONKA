@@ -476,35 +476,83 @@ hr {
 /* ==========================
    RESPONSIVE DESIGN
    ========================== */
+   @media (max-width: 768px) {
+    /* Ocultar botones fuera del menú desplegable */
+    .logout-button,
+    .product-link,
+    .cart-button,
+    .config-button,
+    .language-selector {
+        display: none !important;
+    }
 
-@media (max-width: 768px) {
-    header {
-        flex-direction: column; 
-        text-align: center;
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 1000;
     }
-    header img {
-        margin: 0 auto 10px; 
-    }
-    .logout-button, .login-link, .register-button, .guest-button {
-        width: 100%; 
-    }
-    .productos {
-        flex-direction: column; 
-    }
-    .producto {
-        width: 100%; 
-        max-width: 300px;
-    }
-    .login-container {
+
+    .dropdown-menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: -100%; /* Oculto inicialmente fuera de la pantalla */
+        width: 250px; /* Ancho del menú */
+        height: 100%;
+        background: var(--main-color);
         padding: 15px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        transition: left 0.3s ease; /* Transición suave para abrir/cerrar */
     }
-    .login-container h2 {
-        font-size: 16px; 
+
+    .dropdown-menu.active {
+        display: block;
+        left: 0; /* Mueve el menú hacia la pantalla */
     }
-    .error-message {
-        font-size: 12px; 
+
+    .dropdown-menu a {
+        color: white !important;
+        padding: 10px;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
     }
-    footer {
-        font-size: 10px; 
+
+    .dropdown-menu .language-selector {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .dropdown-menu .language-button img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid white;
+        transition: transform 0.3s ease;
+    }
+
+    .dropdown-menu .language-button img:hover {
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none; /* Oculta el botón hamburguesa en pantallas grandes */
+    }
+
+    .dropdown-menu {
+        display: none !important; /* Oculta el menú en pantallas grandes */
+    }
+
+    .language-selector {
+        display: block; /* Muestra la barra de idioma en pantallas grandes */
     }
 }

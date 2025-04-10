@@ -11,7 +11,6 @@ $lang = $_SESSION['lang'] ?? 'eu';
 
 // Cargar traducciones desde el archivo JSON
 $translations = json_decode(file_get_contents('itzulpenak.json'), true);
-
 // Función para obtener una traducción
 function t($key) {
     global $translations, $lang;
@@ -66,20 +65,53 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     <link rel="stylesheet" href="styles.css">
     <title><?= t('pageTitle') ?></title>
     <script>
-        // Cargar colores desde conf.xml y localStorage al cargar la página
         document.addEventListener('DOMContentLoaded', () => {
-            const mainColor = localStorage.getItem('--main-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->mainColor) ?>';
-            const footerColor = localStorage.getItem('--footer-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->footerColor) ?>';
-            document.documentElement.style.setProperty('--main-color', mainColor);
-            document.documentElement.style.setProperty('--footer-color', footerColor);
-            document.getElementById('mainColor').value = mainColor;
-            document.getElementById('footerColor').value = footerColor;
-        });
-    </script>
+        const mainColor = localStorage.getItem('--main-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->mainColor) ?>';
+        const footerColor = localStorage.getItem('--footer-color') || '<?= htmlspecialchars(simplexml_load_file('conf.xml')->footerColor) ?>';
+        document.documentElement.style.setProperty('--main-color', mainColor);
+        document.documentElement.style.setProperty('--footer-color', footerColor);
+
+        // Verificar si los elementos existen antes de asignarles valores
+        const mainColorElement = document.getElementById('mainColor');
+        const footerColorElement = document.getElementById('footerColor');
+
+        if (mainColorElement) {
+            mainColorElement.value = mainColor;
+        }
+
+        if (footerColorElement) {
+            footerColorElement.value = footerColor;
+        }
+    });
+</script>
 </head>
 <body>
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
+
+    <div class="menu-toggle">☰</div>
+    <div class="dropdown-menu">
+        <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
+            <a href="produktuak.php"><?= t('yourProducts') ?></a>
+            <a href="cesta.php"><?= t('cart') ?></a>
+            <a href="konfigurazioa.php"><?= t('configuration') ?></a>
+            <a href="logout.php"><?= t('logout') ?></a>
+            <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+            <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+        <?php elseif (isset($_SESSION['invitado']) && $_SESSION['invitado']): ?>
+            <a href="login.php"><?= t('login') ?></a>
+            <a href="productInvitedList.php"><?= t('products') ?></a>
+            <a href="cesta.php"><?= t('cart') ?></a>
+            <a href="konfigurazioa.php"><?= t('configuration') ?></a>
+            <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+            <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+        <?php else: ?>
+            <a href="login.php"><?= t('login') ?></a>
+            <a href="productInvitedList.php"><?= t('products') ?></a>
+            <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+            <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+        <?php endif; ?>
+    </div>
 
     <div class="language-selector">
         <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
@@ -98,6 +130,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
         <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
     <?php else: ?>
         <a href="login.php" class="logout-button"><?= t('login') ?></a>
+        <a href="productInvitedList.php" class="product-link"><?= t('products') ?></a>
     <?php endif; ?>
 </header>
 
@@ -150,6 +183,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
 <footer>
 © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
-
+<script src="hamburger.js"></script>
 </body>
 </html>

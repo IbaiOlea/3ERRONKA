@@ -23,108 +23,39 @@ function t($key) {
     <meta charset="UTF-8">
     <title><?= t('loginTitle') ?></title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Estilos para el menú lateral */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: -250px; /* Oculto inicialmente */
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            color: white;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-            z-index: 1000;
-            padding-top: 20px;
-        }
-
-        .side-menu.show {
-            left: 0; /* Mostrar el menú */
-        }
-
-        .side-menu .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-        }
-
-        .side-menu a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 15px 20px;
-            border-bottom: 1px solid #444;
-            font-size: 16px;
-        }
-
-        .side-menu a:hover {
-            background-color: #575757;
-        }
-
-        /* Botón para abrir el menú */
-        .menu-toggle {
-            font-size: 24px;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 1100;
-            display: none; /* Oculto por defecto */
-        }
-
-        /* Ocultar botones del header en pantallas pequeñas */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block; /* Mostrar el botón hamburguesa */
-            }
-
-            .logout-button,
-            .guest-button,
-            .language-selector {
-                display: none; /* Ocultar botones del header */
-            }
-        }
-    </style>
 </head>
 <body>
 
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    
-    <!-- Botón hamburguesa (debe estar fuera del language-selector) -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-    <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
-    <a href="main.php?invitado=1" class="guest-button"><?= t('loginAsGuest') ?></a>
-    
+    <div class="menu-toggle">☰</div>
+    <div class="dropdown-menu">
+        <a href="main.php"><?= t('goToMain') ?></a>
+        <a href="productInvitedList.php"><?= t('products') ?></a>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
+
     <div class="language-selector">
         <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
         <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
     </div>
 
-    <!-- Menú lateral -->
-    <div class="side-menu" id="sideMenu">
-        <span class="close-btn" onclick="toggleMenu()">×</span>
-        <a href="main.php"><?= t('goToMain') ?></a>
-        <a href="main.php?invitado=1"><?= t('loginAsGuest') ?></a>
-    </div>
-</header>
-
-<!-- Script corregido -->
-<script>
-function toggleMenu() {
-    const menu = document.getElementById('sideMenu');
-    menu.classList.toggle('show'); // Cambiado de 'active' a 'show'
-}
-</script>
-
+    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
+        <a href="produktuak.php" class="product-link"><?= t('yourProducts') ?></a>
+        <a href="logout.php" class="logout-button"><?= t('logout') ?></a>
+        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
+    <?php elseif (isset($_SESSION['invitado']) && $_SESSION['invitado']): ?>
+        <a href="login.php" class="logout-button"><?= t('login') ?></a>
+        <a href="productInvitedList.php" class="product-link"><?= t('products') ?></a>
+        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
+    <?php else: ?>
+        <a href="productInvitedList.php" class="product-link"><?= t('products') ?></a>
+        <a href="login.php" class="logout-button"><?= t('login') ?></a>
+    <?php endif; ?>
 </header>
 
 <div class="login-container">
@@ -195,13 +126,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <footer>
 © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
-<script>
-function toggleMenu() {
-    const menu = document.getElementById('sideMenu');
-    menu.classList.toggle('show');
-}
-</script>
-
-
+<script src="hamburger.js"></script>
 </body>
 </html>

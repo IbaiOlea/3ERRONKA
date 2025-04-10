@@ -120,6 +120,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     
+    <div class="menu-toggle">☰</div>
+    <div class="dropdown-menu">
+        <a href="main.php"><?= t('goToMain') ?></a>
+        <a href="produktuak.php"><?= t('yourProducts') ?></a>
+        <a href="logout.php"><?= t('logout') ?></a>
+        <a href="konfigurazioa.php"><?= t('configuration') ?></a>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
+
     <div class="language-selector">
         <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
         <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
@@ -183,5 +193,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
+<script src="hamburger.js"></script>
 </body>
 </html>

@@ -108,9 +108,17 @@ $result = $conn->query($sql);
 <body>
 
 <header>
-    <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
+    <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
     
+    <div class="menu-toggle">☰</div>
+    <div class="dropdown-menu">
+        <a href="main.php"><?= t('goToMain') ?></a>
+        <a href="login.php"><?= t('login') ?></a>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
+
     <div class="language-selector">
         <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
         <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
@@ -156,6 +164,6 @@ $result = $conn->query($sql);
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
-
+<script src="hamburger.js"></script>
 </body>
 </html>

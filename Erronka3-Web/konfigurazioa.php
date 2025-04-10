@@ -66,30 +66,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </script>
 </head>
 <body>
-<?php renderHeader($lang, $_SESSION); ?>
+
+<header>
+    <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
+    
+    <div class="menu-toggle">☰</div>
+    <div class="dropdown-menu">
+        <a href="main.php"><?= t('goToMain') ?></a>
+        <a href="cesta.php"><?= t('cart') ?></a>
+        <a href="produktuak.php"><?= t('yourProducts') ?></a>
+        <a href="logout.php"><?= t('logout') ?></a>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
+
+    <div class="language-selector">
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="<?= t('languageEU') ?>"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="<?= t('languageEN') ?>"></a>
+    </div>
+
+    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
+        <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
+        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="produktuak.php" class="product-link"><?= t('yourProducts') ?></a>
+    <?php endif; ?>
+</header>
 
 <div class="form-container">
     <h1><?= t('configurationTitle') ?></h1>
     <form method="POST" action="">
         <div class="form-section">
             <div>
-                <div>
-                    <label for="mainColor"><?= t('headerColor') ?>:</label>
-                </div>
-                <div>
-                    <input type="color" id="mainColor" name="mainColor" />
-                </div>
-                <br>
+                <label for="mainColor"><?= t('headerColor') ?>:</label>
             </div>
             <div>
-                <div>
-                    <label for="footerColor"><?= t('footerColor') ?>:</label>
-                </div>
-                <div>
-                    <input type="color" id="footerColor" name="footerColor" />
-                </div>
-                <br>
+                <input type="color" id="mainColor" name="mainColor" />
             </div>
+            <br>
+            <div>
+                <label for="footerColor"><?= t('footerColor') ?>:</label>
+            </div>
+            <div>
+                <input type="color" id="footerColor" name="footerColor" />
+            </div>
+            <br>
         </div>
         <div class="form-section">
             <button type="submit" class="button"><?= t('saveColors') ?></button>
@@ -102,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <footer>
     © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
-
+<script src="hamburger.js"></script>
 <script>
     // Cambiar el color dinámicamente y guardar en localStorage
     function updateColor(variable, value) {

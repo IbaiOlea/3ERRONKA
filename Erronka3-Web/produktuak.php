@@ -87,7 +87,10 @@ if ($result_user->num_rows > 0) {
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     
-    <div class="menu-toggle">☰</div>
+    <div class="menu-toggle" aria-expanded="false">
+    <span class="icon-menu">☰</span>
+    <span class="icon-close">✖</span>
+</div>
     <div class="dropdown-menu">
         <a href="main.php"><?= t('goToMain') ?></a>
         <a href="cesta.php">

@@ -30,12 +30,12 @@ body {
     width: 40px;
     height: 40px;
     vertical-align: middle;
-    border-radius: 50%; /* Hace que las imágenes sean circulares */
-    border: 1px solid #ccc; /* Añade un borde */
-    padding: 2px; /* Espaciado interno */
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    padding: 2px;
 }
 .language-button img:hover {
-    border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
+    border-color: #007BFF;
 }
 .language-selector {
     position: absolute;
@@ -92,7 +92,7 @@ header img {
     text-decoration: none;
 }
 .logout-button:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
 }
 .login-link {
     background-color: red;
@@ -108,11 +108,11 @@ header img {
     font-weight: bold;
 }
 .login-link:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
     color: white;
 }
 .cart-button {
-    background-color: #008CBA; 
+    
     color: white;
     text-decoration: none;
     padding: 10px 15px;
@@ -124,7 +124,7 @@ header img {
     margin-left: 10px;
 }
 .cart-button:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
 }
 .product-link {
     background-color: darkred;
@@ -139,7 +139,7 @@ header img {
     text-decoration: none;
 }
 .product-link:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
 }
 .guest-button {
     background-color: darkred;
@@ -154,11 +154,11 @@ header img {
     text-decoration: none;
 }
 .guest-button:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
     color: white;
 }
 .config-button {
-    background-color: #008CBA; 
+    background-color: #008CBA;
     color: white;
     text-decoration: none;
     padding: 10px 15px;
@@ -170,7 +170,7 @@ header img {
     margin-left: 10px;
 }
 .config-button:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
 }
 button, .registbutton {
     background-color: gray;
@@ -186,7 +186,7 @@ button, .registbutton {
     display: block;
 }
 button:hover, .registbutton:hover {
-    background-color: #007bb5; 
+    background-color: #007bb5;
 }
 .buy-button {
     background-color: #4CAF50;
@@ -223,68 +223,68 @@ button:hover, .registbutton:hover {
    LABELS
    ========================== */
 
-   label {
+label {
     display: inline-block;
-    background-color: #008CBA; 
-    color: white; 
-    padding: 10px 20px; 
-    border-radius: 50px; 
-    font-size: 14px; 
-    font-weight: bold; 
-    text-align: center; 
-    margin-bottom: 10px; 
-    transition: background-color 0.3s ease; 
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
 }
 
 label:hover {
-    background-color: #005f7f; 
-    cursor: pointer; 
+    background-color: #005f7f;
+    cursor: pointer;
 }
 
 /* ==========================
    USER INFORMATION
    ========================== */
 
-   .form-group {
+.form-group {
     display: flex;
-    flex-direction: column; 
-    margin-bottom: 15px; 
+    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 .form-group label {
-    font-size: 16px; 
-    font-weight: bold; 
-    color: #ffffff; 
-    margin-bottom: 5px; 
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 5px;
 }
 
 .form-group input {
-    padding: 10px; 
-    font-size: 14px; 
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-    background-color: #f9f9f9; 
-    color: #333; 
-    width: 100%; 
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
+    width: 100%;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .form-group input[readonly] {
-    background-color: #e9ecef; 
-    cursor: not-allowed; 
+    background-color: #e9ecef;
+    cursor: not-allowed;
 }
 
 .form-container h1, .form-container h2 {
-    color: #2c3e50; 
-    text-align: center; 
-    margin-bottom: 20px; 
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 hr {
     border: 0;
     height: 1px;
-    background-color: #ddd; 
-    margin: 20px 0; 
+    background-color: #ddd;
+    margin: 20px 0;
 }
 
 /* ==========================
@@ -335,7 +335,7 @@ main {
    PRODUCT LISTING
    ========================== */
 
-   .product-container, .product-list {
+.product-container, .product-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -352,34 +352,34 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 400px; /* Altura fija para todas las tarjetas */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para las tarjetas */
+    height: 400px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .product-box img, .product-item img {
-    width: 100%; /* Ancho completo del contenedor */
-    height: 150px; /* Alto fijo para todas las imágenes */
-    object-fit: cover; /* Ajusta la imagen para que llene el espacio sin deformarse */
-    margin-bottom: 10px; /* Espaciado inferior */
-    border-radius: 5px; /* Bordes redondeados para las imágenes */
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .product-buttons {
-    margin-top: auto; /* Empuja el botón hacia la parte inferior */
+    margin-top: auto;
 }
 
 .carrito {
-    width: 50px; /* Tamaño más pequeño */
+    width: 50px;
     height: 50px;
     vertical-align: middle;
-    transition: transform 0.2s ease; /* Efecto de hover */
+    transition: transform 0.2s ease;
     background: none;
     border: none;
     padding: 0;
     margin: 0;
     cursor: pointer;
     display: inline-block;
-    color: white; /* Cambia el color del texto a blanco */
+    color: white;
     font-size: 14px;
     text-decoration: none;
 }
@@ -529,8 +529,8 @@ hr {
 /* ==========================
    RESPONSIVE DESIGN
    ========================== */
-   @media (max-width: 768px) {
-    /* Ocultar botones fuera del menú desplegable */
+
+@media (max-width: 768px) {
     .logout-button,
     .product-link,
     .cart-button {
@@ -541,34 +541,23 @@ hr {
         display: none !important;
     }
 
-
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 1000;
-    }
-
     .dropdown-menu {
         display: none;
         position: fixed;
         top: 0;
-        left: -100%; /* Oculto inicialmente fuera de la pantalla */
-        width: 250px; /* Ancho del menú */
+        left: -100%;
+        width: 250px;
         height: 100%;
         background: var(--main-color);
         padding: 15px;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
         z-index: 999;
-        transition: left 0.3s ease; /* Transición suave para abrir/cerrar */
+        transition: left 0.3s ease;
     }
 
     .dropdown-menu.active {
         display: block;
-        left: 0; /* Mueve el menú hacia la pantalla */
+        left: 0;
     }
 
     .dropdown-menu a {
@@ -601,14 +590,53 @@ hr {
 
 @media (min-width: 769px) {
     .menu-toggle {
-        display: none; /* Oculta el botón hamburguesa en pantallas grandes */
+        display: none;
     }
 
     .dropdown-menu {
-        display: none !important; /* Oculta el menú en pantallas grandes */
+        display: none !important;
     }
 
     .language-selector {
-        display: block; /* Muestra la barra de idioma en pantallas grandes */
+        display: block;
+    }
+}
+
+/* ==========================
+   MENU TOGGLE ICON LOGIC
+   ========================== */
+
+.menu-toggle .icon-close {
+    display: none;
+}
+
+.menu-toggle.active .icon-menu {
+    display: none;
+}
+
+.menu-toggle.active .icon-close {
+    display: inline;
+}
+
+.menu-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-toggle.active {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+}
+@media (min-width: 769px) {
+    .menu-toggle,
+    .menu-toggle.active {
+        display: none !important;
     }
 }

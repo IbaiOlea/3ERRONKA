@@ -89,7 +89,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
 
-    <div class="menu-toggle">☰</div>
+    <div class="menu-toggle" aria-expanded="false">
+    <span class="icon-menu">☰</span>
+    <span class="icon-close">✖</span>
+</div>
     <div class="dropdown-menu">
         <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
             <a href="produktuak.php"><?= t('yourProducts') ?></a>

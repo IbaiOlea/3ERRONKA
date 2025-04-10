@@ -1,3 +1,4 @@
+<!-- filepath: c:\xampp\htdocs\3ERRONKA\Erronka3-Web\register.php -->
 <?php
 session_start();
 include 'dbKonexioa.php';
@@ -51,18 +52,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title><?= t('registerTitle') ?></title>
     <link rel="stylesheet" href="styles.css">
+    <script src="hamburger.js" defer></script>
 </head>
 <body>
 
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
-    <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
-    
+
+    <div class="menu-toggle" aria-expanded="false">
+        <span class="icon-menu">☰</span>
+        <span class="icon-close">✖</span>
+    </div>
+
+    <!-- Mostrar siempre este botón -->
+    <a href="main.php" class="product-link"><?= t('goToMain') ?></a>
+
+    <!-- Solo se ve en móvil -->
+    <div class="dropdown-menu">
+        <a href="main.php"><?= t('goToMain') ?></a>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
+
     <div class="language-selector">
-    <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
-    <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
-</div>
+        <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
+        <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
+    </div>
 </header>
+
 
 <div class="login-container">
     <div class="texto">
@@ -83,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <footer>
-© 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
+    © 2025 Medical Solutions Network (M.S.N) - <?= t('allRightsReserved') ?>
 </footer>
 
 </body>

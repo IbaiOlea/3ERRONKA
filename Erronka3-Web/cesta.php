@@ -120,7 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
 <header>
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     
-    <div class="menu-toggle">☰</div>
+    <div class="menu-toggle" aria-expanded="false">
+    <span class="icon-menu">☰</span>
+    <span class="icon-close">✖</span>
+</div>
     <div class="dropdown-menu">
         <a href="main.php"><?= t('goToMain') ?></a>
         <a href="produktuak.php"><?= t('yourProducts') ?></a>

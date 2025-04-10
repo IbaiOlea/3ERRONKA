@@ -43,7 +43,10 @@ $result = $conn->query($sql);
     <img src="M.S.N_Logo.png" alt="M.S.N_Logo">
     <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
     
-    <div class="menu-toggle">☰</div>
+    <div class="menu-toggle" aria-expanded="false">
+    <span class="icon-menu">☰</span>
+    <span class="icon-close">✖</span>
+</div>
     <div class="dropdown-menu">
         <a href="main.php"><?= t('goToMain') ?></a>
         <a href="login.php"><?= t('login') ?></a>

@@ -36,74 +36,6 @@ $result = $conn->query($sql);
             if (footerColor) document.documentElement.style.setProperty('--footer-color', footerColor);
         });
     </script>
-    <style>
-        .product-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .product-item {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 15px;
-            width: 250px;
-            text-align: center;
-            background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 400px; /* Altura fija para todas las tarjetas */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para las tarjetas */
-        }
-
-        .product-item img {
-            width: 100%; /* Ancho completo del contenedor */
-            height: 150px; /* Alto fijo para todas las imágenes */
-            object-fit: cover; /* Ajusta la imagen para que llene el espacio sin deformarse */
-            margin-bottom: 10px; /* Espaciado inferior */
-            border-radius: 5px; /* Bordes redondeados para las imágenes */
-        }
-
-        .product-buttons {
-            margin-top: auto; /* Empuja el botón hacia la parte inferior */
-        }
-
-        .add-to-cart-button {
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            transition: background-color 0.3s ease; /* Transición suave para el hover */
-        }
-
-        .add-to-cart-button:hover {
-            background-color: #007bb5;
-        }
-
-        .language-selector {
-            margin-top: 10px;
-            text-align: right;
-        }
-
-        .language-button img {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-            border-radius: 50%; /* Hace que las imágenes sean circulares */
-            border: 1px solid #ccc; /* Añade un borde */
-            padding: 2px; /* Espaciado interno */
-        }
-
-        .language-button img:hover {
-            border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
-        }
-    </style>
 </head>
 <body>
 
@@ -132,33 +64,33 @@ $result = $conn->query($sql);
 
 <main>
     <h1><?= t('products') ?></h1>
-    <div class="product-list">
-        <?php
-        if ($result && $result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="product-item">';
-                echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
-                echo '<p>' . t('category') . ': ' . htmlspecialchars($row['Kategoria']) . '</p>';
-                echo '<p>' . t('price') . ': ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
-                echo '<p>' . t('stock') . ': ' . htmlspecialchars($row['Stock']) . '</p>';
-                if (!empty($row['Argazkia'])) {
-                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '">';
-                } else {
-                    echo '<p>' . t('noImageAvailable') . '</p>';
-                }
-                echo '<div class="product-buttons">';
-                echo '<form action="cesta.php" method="POST" style="display: inline;">';
-                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
-                echo '<button type="submit" class="add-to-cart-button">' . t('addToCart') . '</button>';
-                echo '</form>';
-                echo '</div>';
-                echo '</div>';
+    <div class="product-container">
+    <?php
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="product-box">';
+            echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
+            echo '<p>' . t('category') . ': ' . htmlspecialchars($row['Kategoria']) . '</p>';
+            echo '<p>' . t('price') . ': ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
+            echo '<p>' . t('stock') . ': ' . htmlspecialchars($row['Stock']) . '</p>';
+            if (!empty($row['Argazkia'])) {
+                echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '">';
+            } else {
+                echo '<p>' . t('noImageAvailable') . '</p>';
             }
-        } else {
-            echo '<p>' . t('noProducts') . '</p>';
+            echo '<div class="product-buttons">';
+            echo '<form action="cesta.php" method="POST" style="display: inline;">';
+            echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
+            echo '<button type="submit" class="add-to-cart-button">' . t('addToCart') . '</button>';
+            echo '</form>';
+            echo '</div>';
+            echo '</div>';
         }
-        ?>
-    </div>
+    } else {
+        echo '<p>' . t('noProducts') . '</p>';
+    }
+    ?>
+</div>
 </main>
 
 <footer>

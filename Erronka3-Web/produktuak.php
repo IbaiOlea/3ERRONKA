@@ -80,54 +80,7 @@ if ($result_user->num_rows > 0) {
             document.documentElement.style.setProperty('--main-color', mainColor);
             document.documentElement.style.setProperty('--footer-color', footerColor);
         });
-    </script>
-     <style>
-       .product-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .product-box {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 15px;
-            width: 250px;
-            text-align: center;
-            background-color: #f9f9f9;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 400px; /* Altura fija para todas las tarjetas */
-        }
-
-        .product-box img {
-            max-width: 100px;
-            max-height: 100px;
-            margin: 0 auto 10px auto; /* Centra la imagen horizontalmente */
-        }
-
-        .product-buttons {
-            margin-top: auto; /* Empuja el botón hacia la parte inferior */
-        }
-
-        .add-to-cart-button {
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            font-size: 14px;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-        }
-
-        .add-to-cart-button:hover {
-            background-color: #007bb5;
-        }
-    </style>
-        
+    </script> 
 </head>
 <body>
 
@@ -160,32 +113,32 @@ if ($result_user->num_rows > 0) {
     <h1><?= t('yourProducts') ?></h1>
     
     <div class="product-container">
-        <?php
-        if ($result && $result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<div class="product-box">';
-                echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
-                echo '<p><strong>' . t('category') . ':</strong> ' . htmlspecialchars($row['Kategoria']) . '</p>';
-                echo '<p><strong>' . t('price') . ':</strong> ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
-                echo '<p><strong>' . t('stock') . ':</strong> ' . htmlspecialchars($row['Stock']) . '</p>';
-                if (!empty($row['Argazkia'])) {
-                    echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '">';
-                } else {
-                    echo '<p>' . t('noImageAvailable') . '</p>';
-                }
-                echo '<div class="product-buttons">';
-                echo '<form action="cesta.php" method="POST" style="display: inline;">';
-                echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
-                echo '<button type="submit" class="add-to-cart-button">' . t('addToCart') . '</button>';
-                echo '</form>';
-                echo '</div>';
-                echo '</div>';
+    <?php
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="product-box">';
+            echo '<h2>' . htmlspecialchars($row['Izena']) . '</h2>';
+            echo '<p><strong>' . t('category') . ':</strong> ' . htmlspecialchars($row['Kategoria']) . '</p>';
+            echo '<p><strong>' . t('price') . ':</strong> ' . htmlspecialchars($row['Prezioa']) . ' €</p>';
+            echo '<p><strong>' . t('stock') . ':</strong> ' . htmlspecialchars($row['Stock']) . '</p>';
+            if (!empty($row['Argazkia'])) {
+                echo '<img src="' . htmlspecialchars($row['Argazkia']) . '" alt="' . htmlspecialchars($row['Izena']) . '">';
+            } else {
+                echo '<p>' . t('noImageAvailable') . '</p>';
             }
-        } else {
-            echo '<p>' . t('noProducts') . '</p>';
+            echo '<div class="product-buttons">';
+            echo '<form action="cesta.php" method="POST" style="display: inline;">';
+            echo '<input type="hidden" name="product_id" value="' . htmlspecialchars($row['ID']) . '">';
+            echo '<button type="submit" class="add-to-cart-button">' . t('addToCart') . '</button>';
+            echo '</form>';
+            echo '</div>';
+            echo '</div>';
         }
-        ?>
-    </div>
+    } else {
+        echo '<p>' . t('noProducts') . '</p>';
+    }
+    ?>
+</div>
 </main>
 
 <footer>

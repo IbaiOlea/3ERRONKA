@@ -73,7 +73,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="menu-toggle">☰</div>
     <div class="dropdown-menu">
         <a href="main.php"><?= t('goToMain') ?></a>
-        <a href="cesta.php"><?= t('cart') ?></a>
+        <a href="cesta.php">
+            <img src="carrito.png" alt="<?= t('cart') ?>" class="carrito">
+            <?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)
+        </a>
         <a href="produktuak.php"><?= t('yourProducts') ?></a>
         <a href="logout.php"><?= t('logout') ?></a>
         <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
@@ -87,7 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
         <a href="main.php" class="logout-button"><?= t('goToMain') ?></a>
-        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="cesta.php" class="cart-button">
+            <img src="carrito.png" alt="<?= t('cart') ?>" class="carrito">
+            <span class="cart-count"><?php echo array_sum($_SESSION['cesta']); ?></span>
+        </a>
         <a href="produktuak.php" class="product-link"><?= t('yourProducts') ?></a>
     <?php endif; ?>
 </header>

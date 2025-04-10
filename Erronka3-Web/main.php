@@ -93,7 +93,10 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     <div class="dropdown-menu">
         <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
             <a href="produktuak.php"><?= t('yourProducts') ?></a>
-            <a href="cesta.php"><?= t('cart') ?></a>
+            <a href="cesta.php">
+                <img src="carrito.png" alt="<?= t('cart') ?>" class="carrito">
+                <?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)
+            </a>
             <a href="konfigurazioa.php"><?= t('configuration') ?></a>
             <a href="logout.php"><?= t('logout') ?></a>
             <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
@@ -101,7 +104,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
         <?php elseif (isset($_SESSION['invitado']) && $_SESSION['invitado']): ?>
             <a href="login.php"><?= t('login') ?></a>
             <a href="productInvitedList.php"><?= t('products') ?></a>
-            <a href="cesta.php"><?= t('cart') ?></a>
             <a href="konfigurazioa.php"><?= t('configuration') ?></a>
             <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
             <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
@@ -121,12 +123,18 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0) {
     <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != 0): ?>
         <a href="produktuak.php" class="product-link"><?= t('yourProducts') ?></a>
         <a href="logout.php" class="logout-button"><?= t('logout') ?></a>
-        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="cesta.php" class="cart-button">
+            <img src="carrito.png" alt="<?= t('cart') ?>" class="carrito">
+            <span class="cart-count"><?php echo array_sum($_SESSION['cesta']); ?></span>
+        </a>
         <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
     <?php elseif (isset($_SESSION['invitado']) && $_SESSION['invitado']): ?>
         <a href="login.php" class="logout-button"><?= t('login') ?></a>
         <a href="productInvitedList.php" class="product-link"><?= t('products') ?></a>
-        <a href="cesta.php" class="cart-button"><?= t('cart') ?> (<?php echo array_sum($_SESSION['cesta']); ?>)</a>
+        <a href="cesta.php" class="cart-button">
+            <img src="carrito.png" alt="<?= t('cart') ?>" class="carrito">
+            <span class="cart-count"><?php echo array_sum($_SESSION['cesta']); ?></span>
+        </a>
         <a href="konfigurazioa.php" class="config-button"><?= t('configuration') ?></a>
     <?php else: ?>
         <a href="login.php" class="logout-button"><?= t('login') ?></a>

@@ -124,8 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
     <div class="dropdown-menu">
         <a href="main.php"><?= t('goToMain') ?></a>
         <a href="produktuak.php"><?= t('yourProducts') ?></a>
-        <a href="logout.php"><?= t('logout') ?></a>
         <a href="konfigurazioa.php"><?= t('configuration') ?></a>
+        <a href="logout.php"><?= t('logout') ?></a>
         <a href="?lang=eu" class="language-button"><img src="eu.png" alt="EU"></a>
         <a href="?lang=en" class="language-button"><img src="en.png" alt="EN"></a>
     </div>

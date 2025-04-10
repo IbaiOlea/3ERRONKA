@@ -79,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                     <input type="color" id="mainColor" name="mainColor" />
                 </div>
+                <br>
             </div>
             <div>
                 <div>
@@ -87,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div>
                     <input type="color" id="footerColor" name="footerColor" />
                 </div>
+                <br>
             </div>
         </div>
         <div class="form-section">

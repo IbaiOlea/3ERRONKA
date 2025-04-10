@@ -115,64 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
             document.getElementById('footerColor').value = footerColor;
         });
     </script>
-    <style>
-       .buy-button {
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            display: inline-block;
-            text-align: center;
-            margin-top: 20px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .buy-button:hover {
-            background-color: #45a049;
-        }
-
-        .remove-button {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            font-size: 12px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-left: 10px;
-        }
-
-        .remove-button:hover {
-            background-color: #d32f2f;
-        }
-
-        .language-selector {
-            margin-top: 10px;
-            text-align: right;
-        }
-
-        .language-button img {
-            width: 40px;
-            height: 40px;
-            vertical-align: middle;
-            border-radius: 50%; /* Hace que las imágenes sean circulares */
-            border: 1px solid #ccc; /* Añade un borde */
-            padding: 2px; /* Espaciado interno */
-        }
-
-        .language-button img:hover {
-            border-color: #007BFF; /* Cambia el color del borde al pasar el ratón */
-        }
-        header img[alt="M.S.N_Logo"] {
-            width: 250px;
-            height: 160px;
-            margin-right: 80px;
-        }
-    </style>
 </head>
 <body>
 <header>
@@ -201,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
         if (!empty($_SESSION['cesta'])) {
             echo '<ul>';
             foreach ($_SESSION['cesta'] as $product_id => $cantidad) {
-                $sql = "SELECT Izena FROM produktuak WHERE ID = ?";
+                $sql = "SELECT Izena, Argazkia FROM produktuak WHERE ID = ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("i", $product_id);
                 $stmt->execute();
@@ -210,6 +152,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_product_id']))
                 if ($result && $result->num_rows > 0) {
                     $product = $result->fetch_assoc();
                     echo '<li>';
+                    if (!empty($product['Argazkia'])) {
+                        echo '<img src="' . htmlspecialchars($product['Argazkia']) . '" alt="' . htmlspecialchars($product['Izena']) . '" class="product-image">';
+                    }
                     echo htmlspecialchars($product['Izena']) . ' - ' . t('quantity') . ': ' . $cantidad;
                     echo '<form action="cesta.php" method="POST" style="display: inline;">';
                     echo '<input type="hidden" name="remove_product_id" value="' . htmlspecialchars($product_id) . '">';

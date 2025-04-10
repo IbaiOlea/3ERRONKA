@@ -92,5 +92,15 @@ namespace ERRONKA3
         {
             MessageBox.Show("Funcionalidad de inscripción pendiente de implementar.");
         }
+
+        private void mnuArchivo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -36,11 +36,13 @@ namespace ERRONKA3
             lblPisua = new Label();
             txtPisua = new TextBox();
             btnEnviar = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lblJaiotzeData
             // 
             lblJaiotzeData.AutoSize = true;
+            lblJaiotzeData.ForeColor = SystemColors.ButtonHighlight;
             lblJaiotzeData.Location = new Point(528, 132);
             lblJaiotzeData.Name = "lblJaiotzeData";
             lblJaiotzeData.Size = new Size(94, 20);
@@ -49,6 +51,10 @@ namespace ERRONKA3
             // 
             // dtpJaiotzeData
             // 
+            dtpJaiotzeData.CalendarMonthBackground = SystemColors.InactiveCaptionText;
+            dtpJaiotzeData.CalendarTitleBackColor = SystemColors.ActiveCaptionText;
+            dtpJaiotzeData.CalendarTitleForeColor = SystemColors.ButtonHighlight;
+            dtpJaiotzeData.CalendarTrailingForeColor = SystemColors.ButtonHighlight;
             dtpJaiotzeData.Location = new Point(650, 125);
             dtpJaiotzeData.Name = "dtpJaiotzeData";
             dtpJaiotzeData.Size = new Size(200, 27);
@@ -57,6 +63,7 @@ namespace ERRONKA3
             // lblSexua
             // 
             lblSexua.AutoSize = true;
+            lblSexua.ForeColor = SystemColors.ButtonHighlight;
             lblSexua.Location = new Point(571, 183);
             lblSexua.Name = "lblSexua";
             lblSexua.Size = new Size(51, 20);
@@ -76,6 +83,7 @@ namespace ERRONKA3
             // lblAltuera
             // 
             lblAltuera.AutoSize = true;
+            lblAltuera.ForeColor = SystemColors.ButtonHighlight;
             lblAltuera.Location = new Point(528, 237);
             lblAltuera.Name = "lblAltuera";
             lblAltuera.Size = new Size(101, 20);
@@ -84,6 +92,8 @@ namespace ERRONKA3
             // 
             // txtAltuera
             // 
+            txtAltuera.BackColor = SystemColors.MenuText;
+            txtAltuera.ForeColor = SystemColors.InactiveBorder;
             txtAltuera.Location = new Point(650, 237);
             txtAltuera.Name = "txtAltuera";
             txtAltuera.Size = new Size(200, 27);
@@ -92,6 +102,7 @@ namespace ERRONKA3
             // lblPisua
             // 
             lblPisua.AutoSize = true;
+            lblPisua.ForeColor = SystemColors.ButtonHighlight;
             lblPisua.Location = new Point(539, 293);
             lblPisua.Name = "lblPisua";
             lblPisua.Size = new Size(90, 20);
@@ -100,6 +111,8 @@ namespace ERRONKA3
             // 
             // txtPisua
             // 
+            txtPisua.BackColor = SystemColors.InfoText;
+            txtPisua.ForeColor = SystemColors.InactiveBorder;
             txtPisua.Location = new Point(650, 293);
             txtPisua.Name = "txtPisua";
             txtPisua.Size = new Size(200, 27);
@@ -107,17 +120,31 @@ namespace ERRONKA3
             // 
             // btnEnviar
             // 
+            btnEnviar.BackColor = SystemColors.AppWorkspace;
+            btnEnviar.ForeColor = SystemColors.ActiveCaptionText;
             btnEnviar.Location = new Point(650, 356);
             btnEnviar.Name = "btnEnviar";
             btnEnviar.Size = new Size(200, 36);
             btnEnviar.TabIndex = 8;
             btnEnviar.Text = "Enviar y Guardar";
-            btnEnviar.UseVisualStyleBackColor = true;
+            btnEnviar.UseVisualStyleBackColor = false;
             btnEnviar.Click += btnEnviar_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(496, 481);
+            label1.Name = "label1";
+            label1.Size = new Size(492, 20);
+            label1.TabIndex = 9;
+            label1.Text = "2025 Medical Solutions Network (M.S.N) - Eskubide guztiak erreserbatuta";
             // 
             // FormDatos
             // 
+            BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(1610, 538);
+            Controls.Add(label1);
             Controls.Add(btnEnviar);
             Controls.Add(txtPisua);
             Controls.Add(lblPisua);
@@ -133,5 +160,6 @@ namespace ERRONKA3
             ResumeLayout(false);
             PerformLayout();
         }
+        private Label label1;
     }
 }
